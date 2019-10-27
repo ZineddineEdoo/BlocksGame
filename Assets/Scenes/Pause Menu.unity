@@ -519,6 +519,11 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 16777215
       objectReference: {fileID: 0}
+    - target: {fileID: 7179494405232854978, guid: 669ace1358d037c4f828e9e2bced8f47,
+        type: 3}
+      propertyPath: isFullDisplay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 669ace1358d037c4f828e9e2bced8f47, type: 3}
 --- !u!224 &768764536 stripped
@@ -1180,6 +1185,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor32.rgba
       value: 16777215
+      objectReference: {fileID: 0}
+    - target: {fileID: 7184164572385351530, guid: 179245d476caf2c459b69ad5a45fc8c2,
+        type: 3}
+      propertyPath: isFullDisplay
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 179245d476caf2c459b69ad5a45fc8c2, type: 3}

@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class DisplayScore : MonoBehaviour
 {
+	[SerializeField]
+	private bool isFullDisplay = default;
+
 	private TextMeshProUGUI textUI;
 
 	void Awake()
@@ -16,6 +19,6 @@ public class DisplayScore : MonoBehaviour
 
 	void Update()
 	{
-		textUI.SetText($"{Globals.Score:0}");
+		textUI.SetText(Globals.GetFormattedScoreText(Globals.Score, isFullDisplay));
 	}
 }

@@ -8,6 +8,9 @@ using UnityEngine;
 public class DisplayHighScore : MonoBehaviour
 {
 	private const float SPEED = 2000f;
+	
+	[SerializeField]
+	private bool isFullDisplay = default;
 
 	[SerializeField]
 	[Tooltip("If True and Score is <= Previous High Score, Will Hide Parent GameObject")]
@@ -36,7 +39,7 @@ public class DisplayHighScore : MonoBehaviour
 				isAnimating = true;
 			}
 			else
-				textUI.SetText($"{SaveManager.CurrentSaveData.HighScore:0}");
+				textUI.SetText(Globals.GetFormattedScoreText(SaveManager.CurrentSaveData.HighScore, isFullDisplay));
 		}
 	}
 
@@ -45,13 +48,13 @@ public class DisplayHighScore : MonoBehaviour
 		if (isAnimating && currentScore < SaveManager.CurrentSaveData.HighScore)
 		{
 			currentScore += SPEED * Time.deltaTime;
-			textUI.SetText($"{currentScore:0}");
+			textUI.SetText(Globals.GetFormattedScoreText(currentScore, isFullDisplay));
 		}
 
 		if (currentScore >= SaveManager.CurrentSaveData.HighScore)
 		{
 			isAnimating = false;
-			textUI.SetText($"{SaveManager.CurrentSaveData.HighScore:0}");
+			textUI.SetText(Globals.GetFormattedScoreText(SaveManager.CurrentSaveData.HighScore, isFullDisplay));
 		}
-	}
+	}	
 }

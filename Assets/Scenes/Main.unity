@@ -974,6 +974,11 @@ PrefabInstance:
       propertyPath: m_textAlignment
       value: 513
       objectReference: {fileID: 0}
+    - target: {fileID: 7764268998409213130, guid: 112619a338ccd624f8c78c96a2edd6a8,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 112619a338ccd624f8c78c96a2edd6a8, type: 3}
 --- !u!224 &1596236339 stripped
