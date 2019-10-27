@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e66517889c32bf4996670926f982d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateOutside: 1
   xAxis: 0
   yAxis: 0
   randomX: 1

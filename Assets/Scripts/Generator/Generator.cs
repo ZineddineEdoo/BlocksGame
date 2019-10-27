@@ -18,6 +18,10 @@ public class Generator : MonoBehaviour
 
 	#region Inspector Variables
 	[SerializeField]
+	[Tooltip("X Axis OR Y Axis Must be 0")]
+	private bool generateOutside = default;
+
+	[SerializeField]
 	[Range(0, 1)]
 	private float xAxis = default;
 
@@ -55,6 +59,9 @@ public class Generator : MonoBehaviour
 
 	void OnValidate()
 	{
+		if (xAxis > 0f && yAxis > 0f)
+			generateOutside = false;
+
 		if (xLimit < 0.1f)
 			xLimit = 0.1f;
 
@@ -110,8 +117,17 @@ public class Generator : MonoBehaviour
 	private Vector2? GetEmptyPosition(Item item)
 	{
 		Vector2? position = null;
+
 		// To prevent Instantiating outside Screen Bounds
 		var gameBounds = screenBounds - item.GetRendererExtentBounds();
+
+		if (generateOutside)
+		{
+			if (xAxis == 0f || xAxis == 1f)
+				gameBounds.x -= item.GetRendererExtentBounds().x;
+			else if (yAxis == 0f || yAxis == 1f)
+				gameBounds.y += item.GetRendererExtentBounds().y;
+		}
 
 		var testPos = new Vector2();
 		int tries = 0;

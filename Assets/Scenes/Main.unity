@@ -520,16 +520,6 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1992476909}
-    - target: {fileID: 6358914173158405479, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: minTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6358914173158405479, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: maxTime
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8, type: 3}
 --- !u!1 &679502700
