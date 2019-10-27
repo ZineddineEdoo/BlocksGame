@@ -36,7 +36,7 @@ public class DisplayBonusScore : MonoBehaviour
 		}
 		else
 		{
-			bonusScore.SetText($"-{args.Bonus:0}");
+			bonusScore.SetText($"{args.Bonus:0}");
 			bonusScore.color = negativeColor;
 		}
 
