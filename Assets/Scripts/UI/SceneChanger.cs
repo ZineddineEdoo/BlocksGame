@@ -23,12 +23,29 @@ public class SceneChanger : MonoBehaviour
 	}
 
 	private int newIndex;
-	
+
+	void Awake()
+	{
+#if UNITY_STANDALONE
+		Screen.SetResolution(432, 768, FullScreenMode.Windowed);
+#endif
+	}
+
+	void OnApplicationFocus(bool focus)
+	{
+		CheckPauseGame(!focus);
+	}
+
 	void OnApplicationPause(bool pause)
 	{
-		if (!SceneManager.GetSceneByBuildIndex(PAUSE_SCENE).isLoaded 
-			&& SceneManager.GetSceneByBuildIndex(MAIN_SCENE).isLoaded 
-			&& pause)
+		CheckPauseGame(pause);
+	}
+
+	private void CheckPauseGame(bool shouldPause)
+	{
+		if (!SceneManager.GetSceneByBuildIndex(PAUSE_SCENE).isLoaded
+			&& SceneManager.GetSceneByBuildIndex(MAIN_SCENE).isLoaded
+			&& shouldPause)
 		{
 			PauseGame();
 		}
