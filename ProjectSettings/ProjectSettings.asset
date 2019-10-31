@@ -651,8 +651,10 @@ PlayerSettings:
     Standalone: 1
   il2cppCompilerConfiguration:
     Android: 2
+    Standalone: 2
   managedStrippingLevel:
     Android: 3
+    Standalone: 3
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 0
   additionalIl2CppArgs: 
