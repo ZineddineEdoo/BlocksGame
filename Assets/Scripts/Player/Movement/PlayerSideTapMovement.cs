@@ -32,7 +32,7 @@ public class PlayerSideTapMovement : MonoBehaviour
 	{
 		if (player.CanMove)
 		{
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE
 			if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
 			{
 				if (Input.mousePosition.y <= Screen.height * maxScreenHeight)
@@ -42,6 +42,15 @@ public class PlayerSideTapMovement : MonoBehaviour
 					else
 						MoveLeft();
 				}
+			}
+			else
+			{
+				var horizontal = Input.GetAxisRaw("Horizontal");
+
+				if (horizontal >= 1f)
+					MoveRight();
+				else if (horizontal <= -1f)
+					MoveLeft();
 			}
 #else
 			if (Input.touchCount > 0)
