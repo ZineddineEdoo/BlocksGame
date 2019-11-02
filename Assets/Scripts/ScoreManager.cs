@@ -45,7 +45,7 @@ public class ScoreManager : MonoBehaviour
 			Globals.PreviousHighScore = SaveManager.CurrentSaveData.HighScore;
 
 			if (score > SaveManager.CurrentSaveData.HighScore)
-				SaveManager.CurrentSaveData = new SaveData(score);
+				SaveManager.CurrentSaveData = new SaveData(score, DateTime.Now);
 		};
 	}
 

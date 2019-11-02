@@ -10,10 +10,12 @@ using UnityEngine;
 public struct SaveData
 {
 	public readonly float HighScore;
+	public readonly DateTime HighScoreDate;
 
-	public SaveData(float highScore)
+	public SaveData(float highScore, DateTime highScoreDate)
 	{
 		HighScore = highScore;
+		HighScoreDate = highScoreDate;
 	}
 }
 
