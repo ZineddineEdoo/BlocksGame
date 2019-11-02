@@ -1,21 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5537212fe2c4414c9a0cdd7ba0728908, type: 3}
-  m_Name: RecorderSettingPreset
-  m_EditorClassIdentifier: 
-  m_Model: {fileID: 4003892501585446126}
-  m_RecorderPresets:
-  - {fileID: 3013078405497608247}
---- !u!181963792 &3013078405497608247
+--- !u!181963792 &-1307528124804772759
 Preset:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,7 +31,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: take
-    value: 1
+    value: 7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: captureEveryNthFrame
@@ -272,7 +257,22 @@ Preset:
     propertyPath: m_ImageInputSelector.renderTextureSamplerSettings.flipFinalOutput
     value: 0
     objectReference: {fileID: 0}
---- !u!181963792 &4003892501585446126
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5537212fe2c4414c9a0cdd7ba0728908, type: 3}
+  m_Name: RecorderSettingPreset
+  m_EditorClassIdentifier: 
+  m_Model: {fileID: 3013120443265913294}
+  m_RecorderPresets:
+  - {fileID: -1307528124804772759}
+--- !u!181963792 &3013120443265913294
 Preset:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,11 +303,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_FrameRatePlayback
-    value: 0
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_FrameRateType
-    value: 4
+    value: 7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_CustomFrameRateValue
