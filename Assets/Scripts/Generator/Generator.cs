@@ -12,6 +12,12 @@ public class Generator : MonoBehaviour
 		public Item item;
 		[Range(0, 100)]
 		public int weight;
+	}	
+
+	[Serializable]
+	public class Difficulty
+	{
+		public List<int> indexWeights;
 	}
 
 	private const int MAX_TRIES = 10;
@@ -49,6 +55,9 @@ public class Generator : MonoBehaviour
 
 	[SerializeField]
 	private List<ItemPrefab> itemPrefabs = default;
+
+	[SerializeField]
+	private List<Difficulty> difficulties = default;
 	#endregion
 
 	private Vector2 screenBounds;
@@ -67,6 +76,18 @@ public class Generator : MonoBehaviour
 
 		if (yLimit < 0.1f)
 			yLimit = 0.1f;
+
+		if (itemPrefabs != default && difficulties.Count > 0)
+		{
+			for (int i = 0; i < difficulties.Count; i++)
+			{
+				if (difficulties[i].indexWeights.Count != itemPrefabs.Count)
+				{
+					difficulties[i].indexWeights.Clear();
+					difficulties[i].indexWeights.AddRange(itemPrefabs.Select(ip => ip.weight));
+				}
+			}
+		}
 	}
 
 	void Awake()

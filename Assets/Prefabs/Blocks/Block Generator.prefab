@@ -58,6 +58,13 @@ MonoBehaviour:
     weight: 1
   - item: {fileID: 231762691695484414, guid: 49f0137240072d64a8fd5491851cda74, type: 3}
     weight: 1
+  difficulties:
+  - indexWeights: 010000000000000000000000
+  - indexWeights: 010000000100000000000000
+  - indexWeights: 010000000100000001000000
+  - indexWeights: 010000000000000001000000
+  - indexWeights: 000000000100000001000000
+  - indexWeights: 000000000000000001000000
 --- !u!114 &6358914173158405479
 MonoBehaviour:
   m_ObjectHideFlags: 0

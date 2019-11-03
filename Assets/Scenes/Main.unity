@@ -520,6 +520,151 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1992476909}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[0].indexWeights.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[1].indexWeights.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[2].indexWeights.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[4].indexWeights.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[5].indexWeights.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[0].indexWeights.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[0].indexWeights.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[0].indexWeights.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[1].indexWeights.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[1].indexWeights.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[1].indexWeights.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[2].indexWeights.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[2].indexWeights.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[2].indexWeights.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[4].indexWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[4].indexWeights.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[4].indexWeights.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[5].indexWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[5].indexWeights.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficulties.Array.data[5].indexWeights.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8, type: 3}
 --- !u!1 &679502700
