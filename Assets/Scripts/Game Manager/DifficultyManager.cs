@@ -14,7 +14,7 @@ public class DifficultyManager : MonoBehaviour
 		VeryHard
 	}
 
-	public event EventHandler<Difficulty> DifficultyChanged;
+	public event EventHandler<Difficulty> DifficultyChanging;
 
 	[SerializeField]
 	private float minTime = default;
@@ -61,7 +61,7 @@ public class DifficultyManager : MonoBehaviour
 
 
 
-			DifficultyChanged?.Invoke(this, Difficulty.VeryHard);
+			DifficultyChanging?.Invoke(this, Difficulty.VeryHard);
 
 			randomDelay = UnityEngine.Random.Range(minTime, maxTime);
 		}

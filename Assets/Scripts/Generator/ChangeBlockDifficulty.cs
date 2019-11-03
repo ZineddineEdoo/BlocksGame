@@ -19,10 +19,10 @@ public class ChangeBlockDifficulty : MonoBehaviour
 		if (generator == null)
 			Debug.LogError($"{nameof(Generator)} Component must be on this GameObject");
 		else
-			difficultyManager.DifficultyChanged += DifficultyManager_DifficultyChanged;
+			difficultyManager.DifficultyChanging += DifficultyManager_DifficultyChanging;
 	}
 
-	private void DifficultyManager_DifficultyChanged(object sender, Difficulty difficulty)
+	private void DifficultyManager_DifficultyChanging(object sender, Difficulty difficulty)
 	{
 		if (difficulty == Difficulty.Easy)
 			generator.SetDifficulty(UnityEngine.Random.Range(0, 2));
