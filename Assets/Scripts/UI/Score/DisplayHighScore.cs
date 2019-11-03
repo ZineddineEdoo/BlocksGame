@@ -11,16 +11,22 @@ public class DisplayHighScore : MonoBehaviour
 	private bool isFullDisplay = default;
 
 	[SerializeField]
+	[Header("Optional")]
 	private TextMeshProUGUI valueText = default;
 
 	[SerializeField]
+	[Header("Optional")]
 	private TextMeshProUGUI dateText = default;
 
 	void Awake()
 	{
-		valueText.SetText(Globals.GetFormattedScoreText(SaveManager.CurrentSaveData.HighScore, isFullDisplay));
-		var date = SaveManager.CurrentSaveData.HighScoreDate;
-		
-		dateText.SetText(date != default ? SaveManager.CurrentSaveData.HighScoreDate.ToString("g") : "");
+		var highScoreText = valueText != default ? valueText : GetComponent<TextMeshProUGUI>();
+		highScoreText.SetText(Globals.GetFormattedScoreText(SaveManager.CurrentSaveData.HighScore, isFullDisplay));
+
+		if (dateText != default)
+		{
+			var date = SaveManager.CurrentSaveData.HighScoreDate;
+			dateText.SetText(date != default ? SaveManager.CurrentSaveData.HighScoreDate.ToString("g") : "");
+		}
 	}
 }
