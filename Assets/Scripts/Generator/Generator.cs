@@ -7,7 +7,7 @@ using UnityEngine;
 public class Generator : MonoBehaviour
 {
 	[Serializable]
-	public struct ItemPrefab
+	public class ItemPrefab
 	{
 		public Item item;
 		[Range(0, 100)]
@@ -104,6 +104,19 @@ public class Generator : MonoBehaviour
 		}
 
 		generatedItems.Clear();
+	}
+
+	public void SetDifficulty(int level)
+	{
+		if (level < 0)
+			level = 0;
+		else if (level >= difficulties.Count)
+			level = difficulties.Count - 1;
+
+		for (int i = 0; i < itemPrefabs.Count; i++)
+		{
+			itemPrefabs[i].weight = difficulties[level].indexWeights[i];
+		}
 	}
 
 	public Item GenerateNext()

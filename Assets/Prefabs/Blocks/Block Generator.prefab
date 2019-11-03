@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3700337228684358163}
   - component: {fileID: 3700337228684358162}
   - component: {fileID: 6358914173158405479}
+  - component: {fileID: 1405906080062349544}
   m_Layer: 0
   m_Name: Block Generator
   m_TagString: Untagged
@@ -80,3 +81,16 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   minTime: 1
   maxTime: 2
+--- !u!114 &1405906080062349544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3700337228684358157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7588640499306da4b831bae581f8cac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyManager: {fileID: 0}

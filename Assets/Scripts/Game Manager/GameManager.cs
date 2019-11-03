@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 	public event EventHandler GameEnding;
 	
 	// True: GameStarted -> GameEnding
+	public float GameTime { get; private set; }
 	public bool IsGameStarted { get; private set; }
 	public bool IsUILoaded { get; set; }
 
@@ -33,7 +34,9 @@ public class GameManager : MonoBehaviour
 		GameStarting?.Invoke(this, null);
 
 		yield return new WaitUntil(() => IsUILoaded);
+
 		IsGameStarted = true;
+		GameTime = Time.time;
 
 		GameStarted?.Invoke(this, null);
 	}
@@ -43,6 +46,8 @@ public class GameManager : MonoBehaviour
 		if (IsGameStarted)
 		{
 			IsGameStarted = false;
+			GameTime = 0f;
+
 			GameEnding?.Invoke(this, null);
 		}
 	}

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6329145598672305232}
   - component: {fileID: 6329145598672305583}
   - component: {fileID: 1372961326901727091}
+  - component: {fileID: 6588956463144697373}
   m_Layer: 0
-  m_Name: Sample Game Manager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,4 +58,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 0
-  timeFrequency: 0
+  isTimed: 0
+--- !u!114 &6588956463144697373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6329145598672305582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f154b2dc6f84e1f448bbe2b73fc877d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTime: 10
+  maxTime: 30

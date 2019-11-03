@@ -455,6 +455,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1405906080062349544, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
+        type: 3}
+      propertyPath: difficultyManager
+      value: 
+      objectReference: {fileID: 1996927334}
     - target: {fileID: 3700337228684358157, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
         type: 3}
       propertyPath: m_Name
@@ -522,101 +527,6 @@ PrefabInstance:
       objectReference: {fileID: 1992476909}
     - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
         type: 3}
-      propertyPath: difficulties.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[0].indexWeights.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[1].indexWeights.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[2].indexWeights.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[3].indexWeights.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[4].indexWeights.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[5].indexWeights.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[0].indexWeights.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[0].indexWeights.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[0].indexWeights.Array.data[2]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[1].indexWeights.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[1].indexWeights.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[1].indexWeights.Array.data[2]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[2].indexWeights.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[2].indexWeights.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[2].indexWeights.Array.data[2]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[2]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
       propertyPath: difficulties.Array.data[3].indexWeights.Array.data[3]
       value: 1
       objectReference: {fileID: 0}
@@ -633,36 +543,6 @@ PrefabInstance:
     - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
         type: 3}
       propertyPath: difficulties.Array.data[3].indexWeights.Array.data[6]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[4].indexWeights.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[4].indexWeights.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[4].indexWeights.Array.data[2]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[5].indexWeights.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[5].indexWeights.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700337228684358162, guid: bc38c1b6eeff95c47937f6f3c8fb9dc8,
-        type: 3}
-      propertyPath: difficulties.Array.data[5].indexWeights.Array.data[2]
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1408,6 +1288,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cd322971d32f34a8dc12bc86496189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1996927334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6588956463144697373, guid: 90fedeab6fea20241a21d5984f8f58b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1175270142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f154b2dc6f84e1f448bbe2b73fc877d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1003881101577161623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1807,6 +1699,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3041580795304428910, guid: 9e9f81ea791180d428cfafafbfc77edb,
+        type: 3}
+      propertyPath: difficultyManager
+      value: 
+      objectReference: {fileID: 1996927334}
     - target: {fileID: 6780236168282816428, guid: 9e9f81ea791180d428cfafafbfc77edb,
         type: 3}
       propertyPath: m_Name
@@ -1872,5 +1769,25 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1992476909}
+    - target: {fileID: 6780236168282816418, guid: 9e9f81ea791180d428cfafafbfc77edb,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780236168282816418, guid: 9e9f81ea791180d428cfafafbfc77edb,
+        type: 3}
+      propertyPath: difficulties.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780236168282816418, guid: 9e9f81ea791180d428cfafafbfc77edb,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780236168282816418, guid: 9e9f81ea791180d428cfafafbfc77edb,
+        type: 3}
+      propertyPath: difficulties.Array.data[3].indexWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e9f81ea791180d428cfafafbfc77edb, type: 3}
