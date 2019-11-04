@@ -36,6 +36,23 @@ public class SaveData
 		HighScoreDate = saveData.HighScoreDate;
 		Achievements = saveData.Achievements;
 	}
+
+	public void SetAchievement(int id, bool isComplete)
+	{
+		var found = Achievements.First(a => a.ID == id);
+
+		if (found != null)
+			found.IsComplete = isComplete;
+		else
+		{
+			found = new AchievementSave()
+			{
+				IsComplete = isComplete
+			};
+
+			Achievements.Add(found);
+		}
+	}
 }
 
 public static class SaveManager
