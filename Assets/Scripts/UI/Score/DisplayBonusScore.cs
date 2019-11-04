@@ -18,6 +18,10 @@ public class DisplayBonusScore : MonoBehaviour
 	[SerializeField]
 	private Color negativeColor = default;
 
+	private TextMeshProUGUI bonusText;
+	private float total;
+	private float lastDisplayTime;
+
 	void Awake()
 	{
 		var scoreManager = GetComponentInParent<MenuUI>().GameManager.GetComponent<ScoreManager>();
@@ -27,20 +31,33 @@ public class DisplayBonusScore : MonoBehaviour
 	private void ScoreManager_BonusScoreUpdating(object sender, (float Bonus, Vector2 Position) args)
 	{
 		var screenPos = Camera.main.WorldToScreenPoint(args.Position);
+
+		if (bonusText == null)
+			bonusText = Instantiate(bonusScorePrefab, screenPos, Quaternion.identity, transform);
 		
-		var bonusScore = Instantiate(bonusScorePrefab, screenPos, Quaternion.identity, transform);
+		bonusText.transform.position = screenPos;
+		total += args.Bonus;
+
 		if (args.Bonus >= 0f)
 		{
-			bonusScore.SetText($"+{args.Bonus:0}");
-			bonusScore.color = positiveColor;
+			bonusText.SetText($"+{Globals.GetFormattedScoreText(total)}");
+			bonusText.color = positiveColor;
 		}
 		else
 		{
-			bonusScore.SetText($"{args.Bonus:0}");
-			bonusScore.color = negativeColor;
+			bonusText.SetText($"{Globals.GetFormattedScoreText(total)}");
+			bonusText.color = negativeColor;
 		}
+		
+		lastDisplayTime = Time.time;
+	}
 
-		bonusScore.CrossFadeAlpha(0f, BONUS_DISPLAY_DURATION, false);
-		Destroy(bonusScore.gameObject, BONUS_DISPLAY_DURATION + 0.1f);
+	void Update()
+	{
+		if (bonusText != null && Time.time >= lastDisplayTime + BONUS_DISPLAY_DURATION)
+		{
+			total = 0f;
+			Destroy(bonusText.gameObject);
+		}
 	}
 }
