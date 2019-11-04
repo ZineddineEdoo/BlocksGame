@@ -5,9 +5,9 @@ using UnityEngine;
 
 public static class Globals
 {
-	private const float BILLION = 1000000000f;
-	private const float MILLION = 1000000f;
-	private const float THOUSAND = 1000f;
+	public const float BILLION = 1000000000f;
+	public const float MILLION = 1000000f;
+	public const float THOUSAND = 1000f;
 
 	public static float Score { get; set; }
 
