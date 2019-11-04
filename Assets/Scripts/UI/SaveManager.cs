@@ -7,46 +7,63 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 [Serializable]
-public struct SaveData
+public class SaveData
 {
-	public readonly float HighScore;
-	public readonly DateTime HighScoreDate;
-
-	public SaveData(float highScore, DateTime highScoreDate)
+	[Serializable]
+	public class AchievementSave
 	{
-		HighScore = highScore;
-		HighScoreDate = highScoreDate;
+		[SerializeField]
+		private int id;
+		[SerializeField]
+		private bool isComplete;
+
+		public int ID { get => id; set => id = value; }
+		public bool IsComplete { get => isComplete; set => isComplete = value; }
+	}	
+
+	public float HighScore;
+	public DateTime HighScoreDate;
+	public List<AchievementSave> Achievements;
+
+	public SaveData()
+	{
+		Achievements = new List<AchievementSave>();
+	}
+
+	public SaveData(SaveData saveData)
+	{
+		HighScore = saveData.HighScore;
+		HighScoreDate = saveData.HighScoreDate;
+		Achievements = saveData.Achievements;
 	}
 }
 
 public static class SaveManager
 {
 	private static string SAVE_FILE_PATH = Path.Combine(Application.persistentDataPath, "SaveFile.bin");
-	private static SaveData? currentSaveData;
+	private static SaveData currentSaveData;
 
 	public static SaveData CurrentSaveData
 	{
 		get
 		{
-			if (currentSaveData == null)
-				Load();
-
-			return (SaveData) currentSaveData;
+			Load();
+			return currentSaveData;
 		}
 		set
 		{
-			Save(value);			
+			currentSaveData = value;
+			Save();
 		}
 	}
 
-	private static void Save(SaveData saveData)
+	public static void Save()
 	{
 		try
 		{
 			using (var fileStream = new FileStream(SAVE_FILE_PATH, FileMode.OpenOrCreate))
 			{
-				new BinaryFormatter().Serialize(fileStream, saveData);
-				currentSaveData = saveData;
+				new BinaryFormatter().Serialize(fileStream, currentSaveData);
 			}
 		}
 		catch (Exception e)
@@ -56,20 +73,24 @@ public static class SaveManager
 	}
 
 	/// <summary>
+	/// Loads Save Data Only if CurrentSaveData is Null <br/>
 	/// Will Set CurrentSaveData to a Non-Null Value
 	/// </summary>
-	private static void Load()
+	public static void Load()
 	{
-		try
+		if (currentSaveData == null)
 		{
-			using (var fileStream = new FileStream(SAVE_FILE_PATH, FileMode.Open, FileAccess.Read))
+			try
 			{
-				currentSaveData = (SaveData)new BinaryFormatter().Deserialize(fileStream);
+				using (var fileStream = new FileStream(SAVE_FILE_PATH, FileMode.Open, FileAccess.Read))
+				{
+					currentSaveData = (SaveData)new BinaryFormatter().Deserialize(fileStream);
+				}
 			}
-		}
-		catch (Exception)
-		{
-			currentSaveData = new SaveData();
+			catch (Exception)
+			{
+				currentSaveData = new SaveData();
+			}
 		}
 	}
 }

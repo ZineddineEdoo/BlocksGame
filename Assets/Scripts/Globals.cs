@@ -11,7 +11,6 @@ public static class Globals
 
 	public static float Score { get; set; }
 
-	// Will Load SaveFile
 	public static float PreviousHighScore { get; set; } = SaveManager.CurrentSaveData.HighScore;
 
 	private static string GetFormattedScoreText(float score)

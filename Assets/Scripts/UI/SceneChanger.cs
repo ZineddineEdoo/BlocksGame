@@ -29,6 +29,9 @@ public class SceneChanger : MonoBehaviour
 #if UNITY_STANDALONE
 		Screen.SetResolution(432, 768, FullScreenMode.Windowed);
 #endif
+
+		AchievementManager.Load();
+		SaveManager.Load();
 	}
 
 	void OnApplicationFocus(bool focus)
