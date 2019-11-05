@@ -32,9 +32,13 @@ public class SceneChanger : MonoBehaviour
 		Screen.SetResolution(432, 768, FullScreenMode.Windowed);
 #endif
 
+		// Assume that Global Scene is the First Loaded Scene in Release Builds
+		// Therefore, that AchievementManager is available
+#if UNITY_EDITOR
 		// Comment To Access Scene Directly For Quick Debugging
 		if (FindObjectOfType<AchievementManager>() == null)
 			SceneManager.LoadSceneAsync(GLOBAL_SCENE);
+#endif
 
 		SaveManager.Load();
 	}
