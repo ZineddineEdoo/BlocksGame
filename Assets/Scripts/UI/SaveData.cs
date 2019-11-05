@@ -2,29 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static AchievementManager;
 
 [Serializable]
 public class SaveData
 {
-	[Serializable]
-	public class AchievementData
-	{
-		[SerializeField]
-		private int id;
-		[SerializeField]
-		private bool isComplete;
-
-		public int ID { get => id; set => id = value; }
-		public bool IsComplete { get => isComplete; set => isComplete = value; }
-	}
-
 	public float HighScore;
 	public DateTime HighScoreDate;
-	public List<AchievementData> Achievements;
+	public List<AchievementID> Achievements;
 
 	public SaveData()
 	{
-		Achievements = new List<AchievementData>();
+		Achievements = new List<AchievementID>();
 	}
 
 	public SaveData(SaveData saveData)
@@ -34,20 +23,9 @@ public class SaveData
 		Achievements = saveData.Achievements;
 	}
 
-	public void SetAchievement(int id, bool isComplete)
+	public void SetAchievement(AchievementID id)
 	{
-		var found = Achievements.FirstOrDefault(a => a.ID == id);
-
-		if (found != default)
-			found.IsComplete = isComplete;
-		else
-		{
-			found = new AchievementData()
-			{
-				IsComplete = isComplete
-			};
-
-			Achievements.Add(found);
-		}
+		if (!Achievements.Any(a => a == id))
+			Achievements.Add(id);
 	}
 }
