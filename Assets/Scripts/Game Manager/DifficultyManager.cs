@@ -63,7 +63,6 @@ public class DifficultyManager : MonoBehaviour
 	{
 		if (gameManager.IsGameStarted)
 		{
-			// Globals.Score
 			// gameManager.GameTime
 			if (currentScoreDifficulty != Globals.MILLION && Globals.Score >= Globals.MILLION)
 			{
