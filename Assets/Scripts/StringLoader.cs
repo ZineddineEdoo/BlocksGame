@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public static class Strings
+public static class StringLoader
 {
 	[Serializable]
 	public struct KeyValue

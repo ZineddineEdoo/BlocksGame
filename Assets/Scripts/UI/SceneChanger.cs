@@ -7,14 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-	public const int MAIN_MENU_SCENE = 0;
-	public const int MAIN_SCENE = 1;
-	public const int GAME_OVER_SCENE = 2;
-	public const int PAUSE_SCENE = 3;
-	public const int ACHIEVEMENTS_SCENE = 4;
+	public const int GLOBAL_SCENE = 0;
+	public const int MAIN_MENU_SCENE = 1;
+	public const int MAIN_SCENE = 2;
+	public const int GAME_OVER_SCENE = 3;
+	public const int PAUSE_SCENE = 4;
+	public const int ACHIEVEMENTS_SCENE = 5;
 
 	public enum Scene
 	{
+		Global = GLOBAL_SCENE,
 		MainMenu = MAIN_MENU_SCENE,
 		Main = MAIN_SCENE,
 		GameOver = GAME_OVER_SCENE,
@@ -30,7 +32,6 @@ public class SceneChanger : MonoBehaviour
 		Screen.SetResolution(432, 768, FullScreenMode.Windowed);
 #endif
 
-		AchievementManager.Load();
 		SaveManager.Load();
 	}
 
