@@ -1,5 +1,5 @@
 {
-	"KeyValues": 
+	"KeyValues":
 	[
 		{
 			"Key": "Score 1K",
@@ -8,6 +8,38 @@
 		{
 			"Key": "Score 10K",
 			"Value": "Get a Score of 10K in a Single Game"
+		},
+		{
+			"Key": "Score 100K",
+			"Value": "Get a Score of 100K in a Single Game"
+		},
+		{
+			"Key": "Score 1M",
+			"Value": "Get a Score of 1M in a Single Game"
+		},
+		{
+			"Key": "Score 10M",
+			"Value": "Get a Score of 10M in a Single Game"
+		},
+		{
+			"Key": "Score 100M",
+			"Value": "Get a Score of 100M in a Single Game"
+		},
+		{
+			"Key": "Score -1K",
+			"Value": "Get a Score of -1K in a Single Game"
+		},
+		{
+			"Key": "Score -10K",
+			"Value": "Get a Score of -10K in a Single Game"
+		},
+		{
+			"Key": "Score -100K",
+			"Value": "Get a Score of -100K in a Single Game"
+		},
+		{
+			"Key": "Score -1M",
+			"Value": "Get a Score of -1M in a Single Game"
 		}
 	]
 }

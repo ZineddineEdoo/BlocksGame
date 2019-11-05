@@ -32,6 +32,10 @@ public class SceneChanger : MonoBehaviour
 		Screen.SetResolution(432, 768, FullScreenMode.Windowed);
 #endif
 
+		// Comment To Access Scene Directly For Quick Debugging
+		if (FindObjectOfType<AchievementManager>() == null)
+			SceneManager.LoadSceneAsync(GLOBAL_SCENE);
+
 		SaveManager.Load();
 	}
 

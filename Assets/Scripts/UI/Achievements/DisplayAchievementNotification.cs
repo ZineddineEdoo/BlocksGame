@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using static AchievementManager;
+using static AchievementLoader;
 
 public class DisplayAchievementNotification : MonoBehaviour
 {
@@ -12,10 +12,7 @@ public class DisplayAchievementNotification : MonoBehaviour
 	private AchievementManager achievementManager = default;
 
 	[SerializeField]
-	private TextMeshProUGUI headerText = default;
-
-	[SerializeField]
-	private TextMeshProUGUI detailsText = default;
+	private AchievementUI achievementUI = default;
 
 	private Queue<Achievement> achievements;
 	private bool isShowing;
@@ -47,9 +44,7 @@ public class DisplayAchievementNotification : MonoBehaviour
 		{
 			isShowing = true;
 
-			var achievement = achievements.Dequeue();
-			headerText.SetText(achievement.Name);
-			detailsText.SetText(achievement.Detail);
+			achievementUI.Set(achievements.Dequeue());
 
 			GetComponent<Animator>().SetTrigger("Notification");
 		}
