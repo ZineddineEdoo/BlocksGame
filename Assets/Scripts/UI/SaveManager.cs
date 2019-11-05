@@ -1,63 +1,13 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-[Serializable]
-public class SaveData
-{
-	[Serializable]
-	public class AchievementSave
-	{
-		[SerializeField]
-		private int id;
-		[SerializeField]
-		private bool isComplete;
-
-		public int ID { get => id; set => id = value; }
-		public bool IsComplete { get => isComplete; set => isComplete = value; }
-	}	
-
-	public float HighScore;
-	public DateTime HighScoreDate;
-	public List<AchievementSave> Achievements;
-
-	public SaveData()
-	{
-		Achievements = new List<AchievementSave>();
-	}
-
-	public SaveData(SaveData saveData)
-	{
-		HighScore = saveData.HighScore;
-		HighScoreDate = saveData.HighScoreDate;
-		Achievements = saveData.Achievements;
-	}
-
-	public void SetAchievement(int id, bool isComplete)
-	{
-		var found = Achievements.First(a => a.ID == id);
-
-		if (found != null)
-			found.IsComplete = isComplete;
-		else
-		{
-			found = new AchievementSave()
-			{
-				IsComplete = isComplete
-			};
-
-			Achievements.Add(found);
-		}
-	}
-}
-
 public static class SaveManager
 {
-	private static string SAVE_FILE_PATH = Path.Combine(Application.persistentDataPath, "SaveFile.bin");
+	private static readonly string SAVE_FILE_PATH = Path.Combine(Application.persistentDataPath, "SaveFile.bin");
 	private static SaveData currentSaveData;
 
 	public static SaveData CurrentSaveData
