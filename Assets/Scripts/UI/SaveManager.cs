@@ -17,7 +17,7 @@ public static class SaveManager
 			Load();
 			return currentSaveData;
 		}
-		set
+		private set
 		{
 			currentSaveData = value;
 			Save();
