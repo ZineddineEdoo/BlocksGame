@@ -7,6 +7,7 @@ using UnityEngine;
 public class DifficultyManager : MonoBehaviour
 {
 	private const float MINUTE = 60f;
+	private const float DEFAULT_DELAY = 5f;
 
 	public enum Difficulty
 	{
@@ -18,24 +19,10 @@ public class DifficultyManager : MonoBehaviour
 
 	public event EventHandler<Difficulty> DifficultyChanging;
 
-	[SerializeField]
-	private float minTime = default;
-
-	[SerializeField]
-	private float maxTime = default;
-
 	private GameManager gameManager;
 	private float currentScoreDifficulty;
 	private Coroutine difficultyCoroutine;
-
-	void OnValidate()
-	{
-		if (minTime < 0f)
-			minTime = 0f;
-
-		if (maxTime < minTime)
-			maxTime = minTime + 1f;
-	}
+	private float lastChangeTime;
 
 	void Awake()
 	{
@@ -61,10 +48,10 @@ public class DifficultyManager : MonoBehaviour
 
 	void Update()
 	{
-		if (gameManager.IsGameStarted)
+		if (gameManager.IsGameStarted && Time.timeScale > 0f)
 		{
 			// gameManager.GameTime
-			if (currentScoreDifficulty != Globals.MILLION && Globals.Score >= Globals.MILLION)
+			if (currentScoreDifficulty != Globals.MILLION && Mathf.Abs(Globals.Score) >= Globals.MILLION)
 			{
 				currentScoreDifficulty = Globals.MILLION;
 				
@@ -73,7 +60,7 @@ public class DifficultyManager : MonoBehaviour
 
 				DifficultyChanging?.Invoke(this, Difficulty.VeryHard);
 			}
-			else if (currentScoreDifficulty != 500 * Globals.THOUSAND && Globals.Score >= 500 * Globals.THOUSAND)
+			else if (currentScoreDifficulty != 500 * Globals.THOUSAND && Mathf.Abs(Globals.Score) >= 500 * Globals.THOUSAND)
 			{
 				currentScoreDifficulty = 500 * Globals.THOUSAND;
 
@@ -84,7 +71,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (currentScoreDifficulty != 200 * Globals.THOUSAND && Globals.Score >= 200 * Globals.THOUSAND)
+			else if (currentScoreDifficulty != 200 * Globals.THOUSAND && Mathf.Abs(Globals.Score) >= 200 * Globals.THOUSAND)
 			{
 				currentScoreDifficulty = 200 * Globals.THOUSAND;
 
@@ -95,7 +82,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (currentScoreDifficulty != 150 * Globals.THOUSAND && Globals.Score >= 150 * Globals.THOUSAND)
+			else if (currentScoreDifficulty != 150 * Globals.THOUSAND && Mathf.Abs(Globals.Score) >= 150 * Globals.THOUSAND)
 			{
 				currentScoreDifficulty = 150 * Globals.THOUSAND;
 
@@ -106,7 +93,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (currentScoreDifficulty != 100 * Globals.THOUSAND && Globals.Score >= 100 * Globals.THOUSAND)
+			else if (currentScoreDifficulty != 100 * Globals.THOUSAND && Mathf.Abs(Globals.Score) >= 100 * Globals.THOUSAND)
 			{
 				currentScoreDifficulty = 100 * Globals.THOUSAND;
 
@@ -117,7 +104,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (currentScoreDifficulty != 10 * Globals.THOUSAND && Globals.Score >= 10 * Globals.THOUSAND)
+			else if (currentScoreDifficulty != 10 * Globals.THOUSAND && Mathf.Abs(Globals.Score) >= 10 * Globals.THOUSAND)
 			{
 				currentScoreDifficulty = 10 * Globals.THOUSAND;
 
@@ -127,7 +114,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (currentScoreDifficulty != 5 * Globals.THOUSAND && Globals.Score >= 5 * Globals.THOUSAND)
+			else if (currentScoreDifficulty != 5 * Globals.THOUSAND && Mathf.Abs(Globals.Score) >= 5 * Globals.THOUSAND)
 			{
 				currentScoreDifficulty = 5 * Globals.THOUSAND;
 
@@ -137,7 +124,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (currentScoreDifficulty != 1 * Globals.THOUSAND && Globals.Score >= 1 * Globals.THOUSAND)
+			else if (currentScoreDifficulty != 1 * Globals.THOUSAND && Mathf.Abs(Globals.Score) >= 1 * Globals.THOUSAND)
 			{
 				currentScoreDifficulty = 1 * Globals.THOUSAND;
 
@@ -146,6 +133,15 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Hard, 0.5f * MINUTE),
 					(Difficulty.Medium, -1f)
 				});
+			}
+			else if (Time.time >= lastChangeTime + DEFAULT_DELAY)
+			{
+				if (difficultyCoroutine != null)
+					StopCoroutine(difficultyCoroutine);
+
+				DifficultyChanging?.Invoke(this, Difficulty.Easy);
+
+				lastChangeTime = Time.time;
 			}
 		}
 	}
