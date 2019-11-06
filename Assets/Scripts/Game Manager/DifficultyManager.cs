@@ -56,7 +56,7 @@ public class DifficultyManager : MonoBehaviour
 			difficultyCoroutine = null;
 		}
 
-		DifficultyChanging?.Invoke(this, Difficulty.Medium);
+		DifficultyChanging?.Invoke(this, Difficulty.Easy);
 	}
 
 	void Update()

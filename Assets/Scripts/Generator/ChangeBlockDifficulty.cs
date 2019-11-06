@@ -25,9 +25,9 @@ public class ChangeBlockDifficulty : MonoBehaviour
 	private void DifficultyManager_DifficultyChanging(object sender, Difficulty difficulty)
 	{
 		if (difficulty == Difficulty.Easy)
-			generator.SetDifficulty(0);
+			generator.SetDifficulty(UnityEngine.Random.Range(0, 2));
 		else if (difficulty == Difficulty.Medium)
-			generator.SetDifficulty(UnityEngine.Random.Range(1, 3));
+			generator.SetDifficulty(2);
 		else if (difficulty == Difficulty.Hard)
 			generator.SetDifficulty(UnityEngine.Random.Range(3, 5));
 		else if (difficulty == Difficulty.VeryHard)

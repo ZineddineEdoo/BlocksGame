@@ -26,9 +26,9 @@ public class ChangeZoneDifficulty : MonoBehaviour
 	{
 		if (difficulty == Difficulty.Easy)
 			generator.SetDifficulty(0);
-		else if (difficulty == Difficulty.Medium)
+		else if (difficulty == Difficulty.Medium || difficulty == Difficulty.Hard)
 			generator.SetDifficulty(1);
-		else if (difficulty == Difficulty.Hard || difficulty == Difficulty.VeryHard)
+		else if (difficulty == Difficulty.VeryHard)
 			generator.SetDifficulty(2);
 	}
 }
