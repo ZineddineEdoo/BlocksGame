@@ -8,8 +8,23 @@ public static class Globals
 	public const float BILLION = 1000000000f;
 	public const float MILLION = 1000000f;
 	public const float THOUSAND = 1000f;
+	private static float score;
 
-	public static float Score { get; set; }
+	public static event EventHandler<float> ScoreUpdated;
+
+	public static float Score 
+	{
+		get => score;
+		set
+		{
+			score = value;
+
+			ScoreUpdated?.Invoke(null, score);
+		}
+	}
+
+	// TODO: Use for Single Game Check (100K -> 0 -> 100K)
+	public static float CurrentStartTime { get; set; }
 
 	public static float PreviousHighScore { get; set; } = SaveManager.CurrentSaveData.HighScore;
 
