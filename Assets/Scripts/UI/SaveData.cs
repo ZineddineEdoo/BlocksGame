@@ -24,6 +24,16 @@ public class SaveData
 		Achievements = saveData.Achievements;
 	}
 
+	/// <summary>
+	/// Sets High Score to 'highScore' and High Score Date to 'Now'
+	/// </summary>
+	/// <param name="highScore"></param>
+	public void SetHighScore(float highScore)
+	{
+		HighScore = highScore;
+		HighScoreDate = DateTime.Now;
+	}
+
 	public void SetAchievement(AchievementID id)
 	{
 		if (!Achievements.Any(a => a == id))

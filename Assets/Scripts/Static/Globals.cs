@@ -26,6 +26,7 @@ public static class Globals
 	// TODO: Use for Single Game Check (100K -> 0 -> 100K)
 	public static float CurrentStartTime { get; set; }
 
+	// Used for High Score Animation on Game Over Scene
 	public static float PreviousHighScore { get; set; } = SaveManager.CurrentSaveData.HighScore;
 
 	private static string GetFormattedScoreText(float score)

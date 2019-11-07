@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using static AchievementLoader.Achievement;
 
 public class AchievementLoader
-{	
+{
 	public class Achievement
 	{
 		/// <summary>
@@ -30,10 +30,7 @@ public class AchievementLoader
 
 	public List<Achievement> Achievements { get; private set; }
 
-	public AchievementLoader()
-	{
-		Load();
-	}
+	public AchievementLoader() => Load();
 
 	private List<Achievement> LoadAchievements()
 	{

@@ -46,8 +46,7 @@ public class ScoreManager : MonoBehaviour
 
 			if (score > SaveManager.CurrentSaveData.HighScore)
 			{
-				SaveManager.CurrentSaveData.HighScore = score;
-				SaveManager.CurrentSaveData.HighScoreDate = DateTime.Now;
+				SaveManager.CurrentSaveData.SetHighScore(score);
 
 				SaveManager.Save();
 			}
