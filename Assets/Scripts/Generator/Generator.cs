@@ -20,6 +20,8 @@ public class Generator : MonoBehaviour
 		public List<int> indexWeights;
 	}
 
+	public event EventHandler<Item> ItemGenerated;
+
 	private const int MAX_TRIES = 10;
 
 	#region Inspector Variables
@@ -112,6 +114,9 @@ public class Generator : MonoBehaviour
 			level = 0;
 		else if (level >= difficulties.Count)
 			level = difficulties.Count - 1;
+		
+		// TODO Check
+		//level = Mathf.Clamp(level, 0, difficulties.Count);
 
 		for (int i = 0; i < itemPrefabs.Count; i++)
 		{
@@ -144,6 +149,9 @@ public class Generator : MonoBehaviour
 		}
 
 		RemoveNullGeneratedItems();
+		
+		if (item != null)
+			ItemGenerated?.Invoke(this, item);
 
 		return item;
 	}

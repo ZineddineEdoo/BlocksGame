@@ -59,7 +59,14 @@ public class GenerateOnTime : Generate
 		if (sender is Item item)
 		{
 			var bonus = item.CalcBonus(position);
-			scoreManager.AddBonus(position, bonus * Time.deltaTime);
+
+			if (item.IsConsumable)
+			{
+				scoreManager.AddBonus(position, bonus);
+				StartCoroutine(item.DestroyGameObject());
+			}
+			else
+				scoreManager.AddBonus(position, bonus * Time.deltaTime);
 		}
 	}
 }

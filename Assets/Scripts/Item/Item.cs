@@ -11,10 +11,20 @@ public class Item : MonoBehaviour
 	
 	[SerializeField]
 	private float maxBonus = default;
+	
+	[SerializeField]
+	private bool isFixedBonus = default;
+
+	[SerializeField]
+	private bool isConsumable = default;
+
+	public bool IsConsumable => isConsumable;
 
 	private Collider2D bonusCollider;
+	private bool isConsumed;
 
 	public bool IsDestroyed { get; private set; }
+	public float MaxBonus { get => maxBonus; set => maxBonus = value; }
 
 	void Awake()
 	{
@@ -34,8 +44,12 @@ public class Item : MonoBehaviour
 	private void OnTriggerStay2D(Collider2D collision)
 	{
 		// TODO Maybe remove check here
-		if (collision.gameObject.CompareTagRecursively("Player"))
-			ItemTriggering?.Invoke(this, collision.transform.position);		
+		if ((!IsConsumable || (IsConsumable && !isConsumed)) 
+			&& collision.gameObject.CompareTagRecursively("Player"))
+		{			
+			isConsumed = true;
+			ItemTriggering?.Invoke(this, collision.transform.position);
+		}
 	}
 
 	public IEnumerator DestroyGameObject()
@@ -58,12 +72,17 @@ public class Item : MonoBehaviour
 	{
 		float bonus;
 
-		var xRelative = transform.InverseTransformPoint(position).x;
-		var extents = bonusCollider.bounds.extents;
-		var t = Mathf.InverseLerp(-extents.x, extents.x, xRelative);
+		if (isFixedBonus)
+			bonus = maxBonus;
+		else
+		{
+			var xRelative = transform.InverseTransformPoint(position).x;
+			var extents = bonusCollider.bounds.extents;
+			var t = Mathf.InverseLerp(-extents.x, extents.x, xRelative);
 
-		var amount = Mathf.Clamp(t > 0.5f ? 1 - t : t, 0.1f, 0.5f);
-		bonus = (amount / 0.5f) * maxBonus;
+			var amount = Mathf.Clamp(t > 0.5f ? 1 - t : t, 0.1f, 0.5f);
+			bonus = (amount / 0.5f) * maxBonus;
+		}
 
 		return bonus;
 	}
