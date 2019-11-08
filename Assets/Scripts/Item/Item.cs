@@ -8,33 +8,26 @@ public class Item : MonoBehaviour
 {
 	public event EventHandler<Collision2D> ItemCollided;
 	public event EventHandler<Vector2> ItemTriggering;
-	
+
 	[SerializeField]
 	private float maxBonus = default;
-	
+
 	[SerializeField]
 	private bool isFixedBonus = default;
 
-	[SerializeField]
-	private bool isConsumable = default;
-
-	public bool IsConsumable => isConsumable;
-
 	private Collider2D bonusCollider;
-	private bool isConsumed;
 
 	public bool IsDestroyed { get; private set; }
 	public float MaxBonus { get => maxBonus; set => maxBonus = value; }
 
-	void Awake()
+	void Awake() => OnAwake();
+
+	protected virtual void OnAwake()
 	{
 		bonusCollider = GetComponentsInChildren<Collider2D>().FirstOrDefault(c => c.isTrigger);
 	}
 
-	public Vector2 GetRendererExtentBounds()
-	{
-		return GetComponentInChildren<Renderer>().bounds.extents;
-	}
+	public Vector2 GetRendererExtentBounds() =>	GetComponentInChildren<Renderer>().bounds.extents;
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
@@ -44,12 +37,13 @@ public class Item : MonoBehaviour
 	private void OnTriggerStay2D(Collider2D collision)
 	{
 		// TODO Maybe remove check here
-		if ((!IsConsumable || (IsConsumable && !isConsumed)) 
-			&& collision.gameObject.CompareTagRecursively("Player"))
-		{			
-			isConsumed = true;
-			ItemTriggering?.Invoke(this, collision.transform.position);
-		}
+		if (collision.gameObject.CompareTagRecursively("Player"))
+			RaiseItemTrigger(collision.transform.position);
+	}
+
+	protected virtual void RaiseItemTrigger(Vector2 position)
+	{		
+		ItemTriggering?.Invoke(this, position);
 	}
 
 	public IEnumerator DestroyGameObject()

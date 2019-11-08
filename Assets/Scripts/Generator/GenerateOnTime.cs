@@ -56,17 +56,18 @@ public class GenerateOnTime : Generate
 
 	private void Item_ItemTriggering(object sender, Vector2 position)
 	{
-		if (sender is Item item)
+		if (sender is ConsumableItem consumableItem)
+		{
+			var bonus = consumableItem.CalcBonus(position);
+
+			scoreManager.AddBonus(position, bonus);
+			StartCoroutine(consumableItem.DestroyGameObject());
+		}
+		else if (sender is Item item)
 		{
 			var bonus = item.CalcBonus(position);
 
-			if (item.IsConsumable)
-			{
-				scoreManager.AddBonus(position, bonus);
-				StartCoroutine(item.DestroyGameObject());
-			}
-			else
-				scoreManager.AddBonus(position, bonus * Time.deltaTime);
+			scoreManager.AddBonus(position, bonus * Time.deltaTime);
 		}
 	}
 }

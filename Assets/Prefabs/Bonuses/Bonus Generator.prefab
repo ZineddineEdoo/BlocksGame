@@ -53,9 +53,9 @@ MonoBehaviour:
   xLimit: 1
   yLimit: 0.1
   itemPrefabs:
-  - item: {fileID: 5466295625397144070, guid: fe6248f7340447e4caa9e6fde570d054, type: 3}
+  - item: {fileID: -8918639695325159496, guid: fe6248f7340447e4caa9e6fde570d054, type: 3}
     weight: 1
-  - item: {fileID: 3447500031500921056, guid: ebd658b3368d3d444841cf55173ed197, type: 3}
+  - item: {fileID: -1769508750411352055, guid: ebd658b3368d3d444841cf55173ed197, type: 3}
     weight: 1
   difficulties:
   - indexWeights: 0100000000000000
@@ -88,3 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfff77f2978089c44bf68bf5c96ef69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficultyManager: {fileID: 0}

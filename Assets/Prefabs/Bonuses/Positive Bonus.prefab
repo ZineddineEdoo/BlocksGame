@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 701783291399569139}
   - component: {fileID: 7391560877312320511}
-  - component: {fileID: 5466295625397144070}
+  - component: {fileID: -8918639695325159496}
   - component: {fileID: 1947938132521205804}
   m_Layer: 0
   m_Name: Positive Bonus
@@ -56,7 +56,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5466295625397144070
+--- !u!114 &-8918639695325159496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,12 +65,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8078585150180634438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4d54191f7d5f9742b7d62b918587788, type: 3}
+  m_Script: {fileID: 11500000, guid: 008a42b2a1eb8de49bb3bc96492192d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxBonus: 1
   isFixedBonus: 1
-  isConsumable: 1
 --- !u!114 &1947938132521205804
 MonoBehaviour:
   m_ObjectHideFlags: 0
