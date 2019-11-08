@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
 {
 	public event EventHandler<float> ScoreUpdated;
 	public event EventHandler<(float Bonus, Vector2 Position)> BonusScoreUpdating;
+	public event EventHandler<float> BonusScoreOneTimeUpdating;
 
 	[SerializeField]
 	[Tooltip("Per Second")]
@@ -72,11 +73,15 @@ public class ScoreManager : MonoBehaviour
 	/// </summary>
 	/// <param name="position"></param>
 	/// <param name="bonus">Must be multiplied by Time.deltaTime</param>
-	public void AddBonus(Vector2 position, float bonus)
+	public void AddBonus(Vector2 position, float bonus, bool isOneTime = false)
 	{
 		if (gameManager.IsGameStarted && bonus != 0f)
 		{
-			BonusScoreUpdating?.Invoke(this, (bonus, position));
+			if (isOneTime)
+				BonusScoreOneTimeUpdating?.Invoke(this, bonus);
+			else
+				BonusScoreUpdating?.Invoke(this, (bonus, position));
+
 			if (bonus > 0)
 				IncreaseScore(bonus);
 			else
