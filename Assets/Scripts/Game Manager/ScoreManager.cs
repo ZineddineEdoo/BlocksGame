@@ -69,18 +69,32 @@ public class ScoreManager : MonoBehaviour
 	public void IncreaseScore(float amt) =>	Score += amt;
 
 	/// <summary>
-	/// Adds a bonus score to Total Score
+	/// Adds a One Time Bonus Score to Total Score
 	/// </summary>
-	/// <param name="position"></param>
-	/// <param name="bonus">Must be multiplied by Time.deltaTime</param>
-	public void AddBonus(Vector2 position, float bonus, bool isOneTime = false)
+	/// <param name="bonus"></param>
+	public void AddOneTimeBonus(float bonus)
 	{
 		if (gameManager.IsGameStarted && bonus != 0f)
 		{
-			if (isOneTime)
-				BonusScoreOneTimeUpdating?.Invoke(this, bonus);
+			BonusScoreOneTimeUpdating?.Invoke(this, bonus);
+
+			if (bonus > 0)
+				IncreaseScore(bonus);
 			else
-				BonusScoreUpdating?.Invoke(this, (bonus, position));
+				DecreaseScore(bonus);
+		}
+	}
+
+	/// <summary>
+	/// Adds a Bonus Score to Total Score
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="bonus">Must be multiplied by Time.deltaTime</param>
+	public void AddBonus(Vector2 position, float bonus)
+	{
+		if (gameManager.IsGameStarted && bonus != 0f)
+		{
+			BonusScoreUpdating?.Invoke(this, (bonus, position));
 
 			if (bonus > 0)
 				IncreaseScore(bonus);
