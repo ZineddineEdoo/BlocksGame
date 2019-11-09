@@ -109,14 +109,8 @@ public class Generator : MonoBehaviour
 	}
 
 	public void SetDifficulty(int level)
-	{
-		if (level < 0)
-			level = 0;
-		else if (level >= difficulties.Count)
-			level = difficulties.Count - 1;
-		
-		// TODO Check
-		//level = Mathf.Clamp(level, 0, difficulties.Count);
+	{		
+		level = Mathf.Clamp(level, 0, difficulties.Count - 1);
 
 		for (int i = 0; i < itemPrefabs.Count; i++)
 		{
