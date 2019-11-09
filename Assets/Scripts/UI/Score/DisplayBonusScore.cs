@@ -38,7 +38,7 @@ public class DisplayBonusScore : MonoBehaviour
 		bonusText.transform.position = screenPos;
 		total += args.Bonus;
 
-		if (args.Bonus >= 0f)
+		if (total >= 0f)
 		{
 			bonusText.SetText($"+{Globals.GetFormattedScoreText(total)}");
 			bonusText.color = positiveColor;
