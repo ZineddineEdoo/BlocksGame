@@ -75,8 +75,7 @@ public class DifficultyManager : MonoBehaviour
 	{
 		if (gameManager.IsGameStarted && Time.timeScale > 0f)
 		{
-			// gameManager.GameTime
-			if (scoreDifficulty != ScoreDifficulty.Level8 && Mathf.Abs(Score) >= MILLION)
+			if (scoreDifficulty != ScoreDifficulty.Level8 && ScoreAbs >= MILLION)
 			{
 				scoreDifficulty = ScoreDifficulty.Level8;
 				
@@ -85,7 +84,7 @@ public class DifficultyManager : MonoBehaviour
 
 				CurrentDifficulty = Difficulty.VeryHard;
 			}
-			else if (scoreDifficulty != ScoreDifficulty.Level7 && Mathf.Abs(Score) >= 500 * THOUSAND)
+			else if (scoreDifficulty != ScoreDifficulty.Level7 && ScoreAbs >= 500 * THOUSAND)
 			{
 				scoreDifficulty = ScoreDifficulty.Level7;
 
@@ -96,7 +95,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (scoreDifficulty != ScoreDifficulty.Level6 && Mathf.Abs(Score) >= 200 * THOUSAND)
+			else if (scoreDifficulty != ScoreDifficulty.Level6 && ScoreAbs >= 200 * THOUSAND)
 			{
 				scoreDifficulty = ScoreDifficulty.Level6;
 
@@ -107,7 +106,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (scoreDifficulty != ScoreDifficulty.Level5 && Mathf.Abs(Score) >= 150 * THOUSAND)
+			else if (scoreDifficulty != ScoreDifficulty.Level5 && ScoreAbs >= 150 * THOUSAND)
 			{
 				scoreDifficulty = ScoreDifficulty.Level5;
 
@@ -118,7 +117,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (scoreDifficulty != ScoreDifficulty.Level4 && Mathf.Abs(Score) >= 100 * THOUSAND)
+			else if (scoreDifficulty != ScoreDifficulty.Level4 && ScoreAbs >= 100 * THOUSAND)
 			{
 				scoreDifficulty = ScoreDifficulty.Level4;
 
@@ -129,7 +128,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (scoreDifficulty != ScoreDifficulty.Level3 && Mathf.Abs(Score) >= 10 * THOUSAND)
+			else if (scoreDifficulty != ScoreDifficulty.Level3 && ScoreAbs >= 10 * THOUSAND)
 			{
 				scoreDifficulty =  ScoreDifficulty.Level3;
 
@@ -139,7 +138,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (scoreDifficulty != ScoreDifficulty.Level2 && Mathf.Abs(Score) >= 5 * THOUSAND)
+			else if (scoreDifficulty != ScoreDifficulty.Level2 && ScoreAbs >= 5 * THOUSAND)
 			{
 				scoreDifficulty = ScoreDifficulty.Level2;
 
@@ -149,7 +148,7 @@ public class DifficultyManager : MonoBehaviour
 					(Difficulty.Medium, -1f)
 				});
 			}
-			else if (scoreDifficulty != ScoreDifficulty.Level1 && Mathf.Abs(Score) >= 1 * THOUSAND)
+			else if (scoreDifficulty != ScoreDifficulty.Level1 && ScoreAbs >= 1 * THOUSAND)
 			{
 				scoreDifficulty = ScoreDifficulty.Level1;
 

@@ -25,6 +25,11 @@ public static class Globals
 		}
 	}
 
+	/// <summary>
+	/// Absolute Value of Score. <code>Mathf.Abs(Score)</code>
+	/// </summary>
+	public static float ScoreAbs => Mathf.Abs(Score);
+
 	// TODO: Use for Single Game Check (100K -> 0 -> 100K)
 	public static float CurrentStartTime { get; set; }
 
