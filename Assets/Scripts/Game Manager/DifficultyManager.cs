@@ -76,99 +76,126 @@ public class DifficultyManager : MonoBehaviour
 		if (gameManager.IsGameStarted && Time.timeScale > 0f)
 		{
 			if (scoreDifficulty != ScoreDifficulty.Level8 && ScoreAbs >= MILLION)
-			{
-				scoreDifficulty = ScoreDifficulty.Level8;
-				
-				if (difficultyCoroutine != null)
-					StopCoroutine(difficultyCoroutine);
-
-				CurrentDifficulty = Difficulty.VeryHard;
-			}
+				SetLevel8();
 			else if (scoreDifficulty != ScoreDifficulty.Level7 && ScoreAbs >= 500 * THOUSAND)
-			{
-				scoreDifficulty = ScoreDifficulty.Level7;
-
-				SetDifficultySequence(new[]
-				{
-					(Difficulty.VeryHard, 10 * MINUTE),
-					(Difficulty.Hard, 5 * MINUTE),
-					(Difficulty.Medium, -1f)
-				});
-			}
+				SetLevel7();
 			else if (scoreDifficulty != ScoreDifficulty.Level6 && ScoreAbs >= 200 * THOUSAND)
-			{
-				scoreDifficulty = ScoreDifficulty.Level6;
-
-				SetDifficultySequence(new[]
-				{
-					(Difficulty.VeryHard, 4 * MINUTE),
-					(Difficulty.Hard, 3 * MINUTE),
-					(Difficulty.Medium, -1f)
-				});
-			}
+				SetLevel6();
 			else if (scoreDifficulty != ScoreDifficulty.Level5 && ScoreAbs >= 150 * THOUSAND)
-			{
-				scoreDifficulty = ScoreDifficulty.Level5;
-
-				SetDifficultySequence(new[]
-				{
-					(Difficulty.VeryHard, 2 * MINUTE),
-					(Difficulty.Hard, 1 * MINUTE),
-					(Difficulty.Medium, -1f)
-				});
-			}
+				SetLevel5();
 			else if (scoreDifficulty != ScoreDifficulty.Level4 && ScoreAbs >= 100 * THOUSAND)
-			{
-				scoreDifficulty = ScoreDifficulty.Level4;
-
-				SetDifficultySequence(new[]
-				{
-					(Difficulty.VeryHard, 2 * MINUTE),
-					(Difficulty.Hard, 0.5f * MINUTE),
-					(Difficulty.Medium, -1f)
-				});
-			}
+				SetLevel4();
 			else if (scoreDifficulty != ScoreDifficulty.Level3 && ScoreAbs >= 10 * THOUSAND)
-			{
-				scoreDifficulty =  ScoreDifficulty.Level3;
-
-				SetDifficultySequence(new[]
-				{
-					(Difficulty.Hard, 2 * MINUTE),
-					(Difficulty.Medium, -1f)
-				});
-			}
+				SetLevel3();
 			else if (scoreDifficulty != ScoreDifficulty.Level2 && ScoreAbs >= 5 * THOUSAND)
-			{
-				scoreDifficulty = ScoreDifficulty.Level2;
-
-				SetDifficultySequence(new[]
-				{
-					(Difficulty.Hard, 1 * MINUTE),
-					(Difficulty.Medium, -1f)
-				});
-			}
+				SetLevel2();
 			else if (scoreDifficulty != ScoreDifficulty.Level1 && ScoreAbs >= 1 * THOUSAND)
-			{
-				scoreDifficulty = ScoreDifficulty.Level1;
-
-				SetDifficultySequence(new[]
-				{
-					(Difficulty.Hard, 0.5f * MINUTE),
-					(Difficulty.Medium, -1f)
-				});
-			}
+				SetLevel1();
 			else if (Time.time >= lastChangeTime + DEFAULT_DELAY)
-			{
-				scoreDifficulty = ScoreDifficulty.Level0;
-
-				if (difficultyCoroutine != null)
-					StopCoroutine(difficultyCoroutine);
-
-				CurrentDifficulty = Difficulty.Easy;
-				lastChangeTime = Time.time;
-			}
+				SetLevel0();
 		}
+	}
+
+	private void SetLevel8()
+	{
+		scoreDifficulty = ScoreDifficulty.Level8;
+
+		if (difficultyCoroutine != null)
+			StopCoroutine(difficultyCoroutine);
+
+		CurrentDifficulty = Difficulty.VeryHard;
+	}
+
+	private void SetLevel7()
+	{
+		scoreDifficulty = ScoreDifficulty.Level7;
+
+		SetDifficultySequence(new[]
+		{
+			(Difficulty.VeryHard, 10 * MINUTE),
+			(Difficulty.Hard, 5 * MINUTE),
+			(Difficulty.Medium, -1f)
+		});
+	}
+
+	private void SetLevel6()
+	{
+		scoreDifficulty = ScoreDifficulty.Level6;
+
+		SetDifficultySequence(new[]
+		{
+			(Difficulty.VeryHard, 4 * MINUTE),
+			(Difficulty.Hard, 3 * MINUTE),
+			(Difficulty.Medium, -1f)
+		});
+	}
+
+	private void SetLevel5()
+	{
+		scoreDifficulty = ScoreDifficulty.Level5;
+
+		SetDifficultySequence(new[]
+		{
+			(Difficulty.VeryHard, 2 * MINUTE),
+			(Difficulty.Hard, 1 * MINUTE),
+			(Difficulty.Medium, -1f)
+		});
+	}
+	
+	private void SetLevel4()
+	{
+		scoreDifficulty = ScoreDifficulty.Level4;
+
+		SetDifficultySequence(new[]
+		{
+			(Difficulty.VeryHard, 2 * MINUTE),
+			(Difficulty.Hard, 0.5f * MINUTE),
+			(Difficulty.Medium, -1f)
+		});
+	}
+	
+	private void SetLevel3()
+	{
+		scoreDifficulty = ScoreDifficulty.Level3;
+
+		SetDifficultySequence(new[]
+		{
+			(Difficulty.Hard, 2 * MINUTE),
+			(Difficulty.Medium, -1f)
+		});
+	}
+
+	private void SetLevel2()
+	{
+		scoreDifficulty = ScoreDifficulty.Level2;
+
+		SetDifficultySequence(new[]
+		{
+			(Difficulty.Hard, 1 * MINUTE),
+			(Difficulty.Medium, -1f)
+		});
+	}
+
+	private void SetLevel1()
+	{
+		scoreDifficulty = ScoreDifficulty.Level1;
+
+		SetDifficultySequence(new[]
+		{
+			(Difficulty.Hard, 0.5f * MINUTE),
+			(Difficulty.Medium, -1f)
+		});
+	}
+
+	private void SetLevel0()
+	{
+		scoreDifficulty = ScoreDifficulty.Level0;
+
+		if (difficultyCoroutine != null)
+			StopCoroutine(difficultyCoroutine);
+
+		CurrentDifficulty = Difficulty.Easy;
+		lastChangeTime = Time.time;
 	}
 
 	/// <summary>
