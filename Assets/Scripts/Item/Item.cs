@@ -51,7 +51,7 @@ public class Item : MonoBehaviour
 		IsDestroyed = true;
 
 		var animator = GetComponentInChildren<Animator>();
-		if (animator != null)
+		if (animator != null && animator.parameters.FirstOrDefault(p => p.name == "FadeOut") != default)
 		{
 			animator.SetBool("FadeOut", true);
 

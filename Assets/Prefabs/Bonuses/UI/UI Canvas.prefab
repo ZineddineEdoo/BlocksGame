@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 1427896705533685738}
   - component: {fileID: 207985087870022131}
   - component: {fileID: 7574910453579436999}
+  - component: {fileID: 6174875066151654109}
   m_Layer: 0
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -267,3 +268,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!95 &6174875066151654109
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6357402722408120697}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de10a21688ff64243b3770c21c200ee5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
