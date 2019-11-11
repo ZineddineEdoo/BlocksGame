@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+#if !INSTANT
+#pragma warning disable 0414
+#endif
+
 public class TrialDisplay : MonoBehaviour
 {
 	[SerializeField]
@@ -16,3 +20,7 @@ public class TrialDisplay : MonoBehaviour
 	}
 #endif
 }
+
+#if !INSTANT
+#pragma warning restore 0414
+#endif
