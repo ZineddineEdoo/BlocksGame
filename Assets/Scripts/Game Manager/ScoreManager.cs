@@ -7,7 +7,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
 	public event EventHandler<float> ScoreUpdated;
-	public event EventHandler<(float Bonus, Vector2 Position)> BonusScoreUpdating;
+	public event EventHandler<float> BonusScoreUpdating;
 	public event EventHandler<float> BonusScoreOneTimeUpdating;
 
 	[SerializeField]
@@ -101,7 +101,7 @@ public class ScoreManager : MonoBehaviour
 	/// </summary>
 	/// <param name="position"></param>
 	/// <param name="bonus">Must be multiplied by Time.deltaTime</param>
-	public void AddBonus(Vector2 position, float bonus)
+	public void AddBonus(float bonus)
 	{
 #if INSTANT
 		if (Mathf.Abs(score + bonus) > Globals.INSTANT_SCORE_LIMIT)
@@ -109,7 +109,7 @@ public class ScoreManager : MonoBehaviour
 #endif
 		if (gameManager.IsGameStarted && bonus != 0f)
 		{
-			BonusScoreUpdating?.Invoke(this, (bonus, position));
+			BonusScoreUpdating?.Invoke(this, bonus);
 
 			if (bonus > 0)
 				IncreaseScore(bonus);

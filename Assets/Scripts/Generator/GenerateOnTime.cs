@@ -67,7 +67,7 @@ public class GenerateOnTime : Generate
 		{
 			var bonus = item.CalcBonus(position);
 
-			scoreManager.AddBonus(position, bonus * Time.deltaTime);
+			scoreManager.AddBonus(bonus * Time.deltaTime);
 		}
 	}
 }

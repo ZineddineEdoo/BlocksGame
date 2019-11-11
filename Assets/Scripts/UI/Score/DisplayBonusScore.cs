@@ -27,9 +27,9 @@ public class DisplayBonusScore : MonoBehaviour
 		scoreManager.BonusScoreUpdating += ScoreManager_BonusScoreUpdating;
 	}
 
-	private void ScoreManager_BonusScoreUpdating(object sender, (float Bonus, Vector2 Position) args)
+	private void ScoreManager_BonusScoreUpdating(object sender, float bonus)
 	{
-		total += args.Bonus;
+		total += bonus;
 
 		if (total >= 0f)
 		{
