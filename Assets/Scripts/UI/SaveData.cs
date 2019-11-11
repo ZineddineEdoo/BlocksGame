@@ -8,17 +8,25 @@ using static AchievementLoader.Achievement;
 [Serializable]
 public class SaveData
 {
+	public enum VersionCode
+	{
+		Version1
+	}
+
+	public VersionCode Version;
 	public float HighScore;
 	public DateTime HighScoreDate;
 	public List<AchievementID> Achievements;
 
 	public SaveData()
 	{
+		Version = GetLatestVersion();
 		Achievements = new List<AchievementID>();
 	}
 
 	public SaveData(SaveData saveData)
 	{
+		Version = saveData.Version;
 		HighScore = saveData.HighScore;
 		HighScoreDate = saveData.HighScoreDate;
 		Achievements = saveData.Achievements;
@@ -38,5 +46,14 @@ public class SaveData
 	{
 		if (!Achievements.Any(a => a == id))
 			Achievements.Add(id);
+	}
+
+	public void UpdateVersion() => Version = GetLatestVersion();
+
+	private VersionCode GetLatestVersion()
+	{
+		var versions = Enum.GetValues(typeof(VersionCode));
+
+		return (VersionCode)versions.GetValue(versions.Length - 1);
 	}
 }

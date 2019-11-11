@@ -57,6 +57,9 @@ public static class SaveManager
 				using (var fileStream = new FileStream(SAVE_FILE_PATH, FileMode.Open, FileAccess.Read))
 				{
 					currentSaveData = (SaveData)new BinaryFormatter().Deserialize(fileStream);
+					// If Version is not Latest Version
+					// Convert Save Data based on currentSaveData.Version
+					// currentSaveData.UpdateVersion();					
 				}
 			}
 			catch (Exception)
