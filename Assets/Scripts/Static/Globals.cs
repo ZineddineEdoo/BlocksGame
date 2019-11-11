@@ -10,6 +10,8 @@ public static class Globals
 	public const float MILLION = 1000000f;
 	public const float THOUSAND = 1000f;
 
+	public const float INSTANT_SCORE_LIMIT = 200 * THOUSAND;
+
 	private static float score;
 
 	public static event EventHandler<float> ScoreUpdated;
@@ -19,9 +21,15 @@ public static class Globals
 		get => score;
 		set
 		{
-			score = value;
-
-			ScoreUpdated?.Invoke(null, score);
+			if (score != value)
+			{
+#if INSTANT
+				score = Mathf.Clamp(value, -INSTANT_SCORE_LIMIT, INSTANT_SCORE_LIMIT);
+#else
+				score = value;
+#endif
+				ScoreUpdated?.Invoke(null, score);
+			}
 		}
 	}
 

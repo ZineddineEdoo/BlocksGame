@@ -26,6 +26,7 @@ public static class SaveManager
 
 	public static void Save()
 	{
+#if !INSTANT
 		try
 		{
 			using (var fileStream = new FileStream(SAVE_FILE_PATH, FileMode.OpenOrCreate))
@@ -37,6 +38,7 @@ public static class SaveManager
 		{
 			Debug.LogError($"Game couldn't be saved, Reason: {e.Message}");
 		}
+#endif
 	}
 
 	/// <summary>
@@ -47,6 +49,9 @@ public static class SaveManager
 	{
 		if (currentSaveData == null)
 		{
+#if INSTANT
+			currentSaveData = new SaveData();
+#else
 			try
 			{
 				using (var fileStream = new FileStream(SAVE_FILE_PATH, FileMode.Open, FileAccess.Read))
@@ -58,6 +63,7 @@ public static class SaveManager
 			{
 				currentSaveData = new SaveData();
 			}
+#endif
 		}
 	}
 }

@@ -25,10 +25,17 @@ public class ScoreManager : MonoBehaviour
 		get => score;
 		protected set
 		{
-			score = value;
-			
-			Globals.Score = score;
-			ScoreUpdated?.Invoke(this, score);
+			if (score != value)
+			{
+#if INSTANT
+				score = Mathf.Clamp(value, -Globals.INSTANT_SCORE_LIMIT, Globals.INSTANT_SCORE_LIMIT);
+#else
+				score = value;
+#endif
+				Globals.Score = score;
+
+				ScoreUpdated?.Invoke(this, score);
+			}
 		}
 	}	
 
@@ -74,6 +81,10 @@ public class ScoreManager : MonoBehaviour
 	/// <param name="bonus"></param>
 	public void AddOneTimeBonus(float bonus)
 	{
+#if INSTANT
+		if (Mathf.Abs(score + bonus) > Globals.INSTANT_SCORE_LIMIT)
+			bonus = Globals.INSTANT_SCORE_LIMIT - score;
+#endif
 		if (gameManager.IsGameStarted && bonus != 0f)
 		{
 			BonusScoreOneTimeUpdating?.Invoke(this, bonus);
@@ -92,6 +103,10 @@ public class ScoreManager : MonoBehaviour
 	/// <param name="bonus">Must be multiplied by Time.deltaTime</param>
 	public void AddBonus(Vector2 position, float bonus)
 	{
+#if INSTANT
+		if (Mathf.Abs(score + bonus) > Globals.INSTANT_SCORE_LIMIT)
+			bonus = Globals.INSTANT_SCORE_LIMIT - score;
+#endif
 		if (gameManager.IsGameStarted && bonus != 0f)
 		{
 			BonusScoreUpdating?.Invoke(this, (bonus, position));
