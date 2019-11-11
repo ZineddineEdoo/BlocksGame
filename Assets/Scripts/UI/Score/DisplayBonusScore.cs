@@ -24,18 +24,14 @@ public class DisplayBonusScore : MonoBehaviour
 
 	void Awake()
 	{
-		var scoreManager = GetComponentInParent<MenuUI>().GameManager.GetComponent<ScoreManager>();
+		bonusText = GetComponent<TextMeshProUGUI>();
+
+		var scoreManager = GetComponentInParent<Player>().GameManager.GetComponent<ScoreManager>();
 		scoreManager.BonusScoreUpdating += ScoreManager_BonusScoreUpdating;
 	}
 
 	private void ScoreManager_BonusScoreUpdating(object sender, (float Bonus, Vector2 Position) args)
 	{
-		var screenPos = Camera.main.WorldToScreenPoint(args.Position);
-
-		if (bonusText == null)
-			bonusText = Instantiate(bonusScorePrefab, screenPos, Quaternion.identity, transform);
-		
-		bonusText.transform.position = screenPos;
 		total += args.Bonus;
 
 		if (total >= 0f)
@@ -54,10 +50,10 @@ public class DisplayBonusScore : MonoBehaviour
 
 	void Update()
 	{
-		if (bonusText != null && Time.time >= lastDisplayTime + BONUS_DISPLAY_DURATION)
+		if (bonusText.text.Length > 0 && Time.time >= lastDisplayTime + BONUS_DISPLAY_DURATION)
 		{
 			total = 0f;
-			Destroy(bonusText.gameObject);
+			bonusText.SetText("");
 		}
 	}
 }
