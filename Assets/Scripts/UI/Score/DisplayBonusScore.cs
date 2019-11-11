@@ -8,9 +8,6 @@ using UnityEngine;
 public class DisplayBonusScore : MonoBehaviour
 {
 	private const float BONUS_DISPLAY_DURATION = 0.5f;
-
-	[SerializeField]
-	private TextMeshProUGUI bonusScorePrefab = default;
 	
 	[SerializeField]
 	private Color positiveColor = default;
