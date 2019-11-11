@@ -20,7 +20,7 @@ public class AchievementLoader
 			ScoreN1K,
 			ScoreN10K,
 			ScoreN100K,
-			ScoreN1M,
+			ScoreN1M
 		}
 
 		public AchievementID ID { get; set; }
