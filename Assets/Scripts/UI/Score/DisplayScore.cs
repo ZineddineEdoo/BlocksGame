@@ -12,29 +12,29 @@ public class DisplayScore : MonoBehaviour
 
 	private TextMeshProUGUI textUI;
 	private Color defaultColor;
-	private FontStyles defaultStyle;
 
 	void Awake()
 	{
 		textUI = GetComponent<TextMeshProUGUI>();
 		defaultColor = textUI.color;
-		defaultStyle = textUI.fontStyle;
 	}
 
 	void Update()
 	{
-		textUI.SetText(Globals.GetFormattedScoreText(Globals.Score, isFullDisplay));
+		var formattedText = Globals.GetFormattedScoreText(Globals.Score, isFullDisplay);
 
-#if INSTANT
+#if !INSTANT
+		textUI.SetText(formattedText);
+#else
 		if (Mathf.Abs(Globals.Score) >= Globals.INSTANT_SCORE_LIMIT)
 		{
 			textUI.color = Color.red;
-			textUI.fontStyle = FontStyles.Italic;
+			textUI.SetText($"[{formattedText}]");
 		}
 		else
 		{
 			textUI.color = defaultColor;
-			textUI.fontStyle = defaultStyle;
+			textUI.SetText(formattedText);
 		}
 #endif
 	}
