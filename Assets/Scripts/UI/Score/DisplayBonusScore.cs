@@ -17,7 +17,7 @@ public class DisplayBonusScore : MonoBehaviour
 
 	private TextMeshProUGUI bonusText;
 	private float total;
-	private float lastDisplayTime;
+	private Coroutine clearTextCoroutine;
 
 	void Awake()
 	{
@@ -29,6 +29,9 @@ public class DisplayBonusScore : MonoBehaviour
 
 	private void ScoreManager_BonusScoreUpdating(object sender, float bonus)
 	{
+		if (clearTextCoroutine != null)
+			StopCoroutine(clearTextCoroutine);
+
 		total += bonus;
 
 		if (total >= 0f)
@@ -41,16 +44,17 @@ public class DisplayBonusScore : MonoBehaviour
 			bonusText.SetText($"{Globals.GetFormattedScoreText(total)}");
 			bonusText.color = negativeColor;
 		}
-		
-		lastDisplayTime = Time.time;
+
+		clearTextCoroutine = StartCoroutine(ClearText());
 	}
 
-	void Update()
+	private IEnumerator ClearText()
 	{
-		if (bonusText.text.Length > 0 && Time.time >= lastDisplayTime + BONUS_DISPLAY_DURATION)
-		{
-			total = 0f;
-			bonusText.SetText("");
-		}
+		yield return new WaitForSecondsRealtime(BONUS_DISPLAY_DURATION);
+
+		total = 0f;
+		bonusText.SetText("");
+
+		clearTextCoroutine = null;
 	}
 }
