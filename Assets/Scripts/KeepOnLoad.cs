@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class KeepOnLoad : MonoBehaviour
 {
-	private void Awake()
+	void Awake()
 	{
 		DontDestroyOnLoad(gameObject);
 	}
