@@ -94,11 +94,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 701783291399569139}
     m_Modifications:
-    - target: {fileID: 6357402722408120697, guid: 54bcf2a776d425747922e7b0bf1ccdf0,
-        type: 3}
-      propertyPath: m_Name
-      value: Amount Canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 8380634754112348287, guid: 54bcf2a776d425747922e7b0bf1ccdf0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -204,6 +199,17 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6357402722408120697, guid: 54bcf2a776d425747922e7b0bf1ccdf0,
+        type: 3}
+      propertyPath: m_Name
+      value: Amount Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891015976645436339, guid: 54bcf2a776d425747922e7b0bf1ccdf0,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54bcf2a776d425747922e7b0bf1ccdf0, type: 3}
 --- !u!224 &6808624823744972635 stripped
@@ -219,11 +225,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 701783291399569139}
     m_Modifications:
-    - target: {fileID: 1042493361864469234, guid: fb9bc69fb07b227478ac7f38be0f59f7,
-        type: 3}
-      propertyPath: m_Name
-      value: Bonus Circle Empty
-      objectReference: {fileID: 0}
     - target: {fileID: 6378536397504396660, guid: fb9bc69fb07b227478ac7f38be0f59f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -289,20 +290,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2080595880800889076, guid: fb9bc69fb07b227478ac7f38be0f59f7,
+    - target: {fileID: 1042493361864469234, guid: fb9bc69fb07b227478ac7f38be0f59f7,
         type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2080595880800889076, guid: fb9bc69fb07b227478ac7f38be0f59f7,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.73333335
-      objectReference: {fileID: 0}
-    - target: {fileID: 2080595880800889076, guid: fb9bc69fb07b227478ac7f38be0f59f7,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.4666667
+      propertyPath: m_Name
+      value: Bonus Circle Empty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb9bc69fb07b227478ac7f38be0f59f7, type: 3}
