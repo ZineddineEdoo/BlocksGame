@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static SceneController;
 
-/// <summary>
-/// Requires SceneChanger Component on the Same GameObject
-/// </summary>
 public class MenuUI : MonoBehaviour
 {
 	[SerializeField]
@@ -16,7 +14,7 @@ public class MenuUI : MonoBehaviour
 
 	void Awake()
 	{
-		gameManager.GameEnding += (s, e) => GetComponent<SceneChanger>().ChangeSceneTo(SceneChanger.GAME_OVER_SCENE);
+		gameManager.GameEnding += (s, e) => FindObjectOfType<SceneController>().ChangeSceneTo(Scene.GameOver, GetComponent<Animator>());
 	}
 
 	/// <summary>

@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static SceneChanger;
+using static SceneController;
 
-/// <summary>
-/// Requires SceneChanger Component in Parent Hierarchy
-/// </summary>
 public class SceneNavigatorButton : MonoBehaviour
 {
 	[SerializeField]
@@ -17,8 +14,8 @@ public class SceneNavigatorButton : MonoBehaviour
 	void Awake()
 	{
 		GetComponent<Button>().onClick.AddListener(() =>
-		{			
-			GetComponentInParent<SceneChanger>().ChangeSceneTo(destinationScene);
+		{
+			FindObjectOfType<SceneController>().ChangeSceneTo(destinationScene, GetComponentInParent<Animator>());
 		});
 	}
 }

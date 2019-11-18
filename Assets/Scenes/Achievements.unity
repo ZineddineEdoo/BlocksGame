@@ -1053,7 +1053,7 @@ PrefabInstance:
     - target: {fileID: 3873532456619577095, guid: 134fd4f7eaf2ebe429378d666e91ce3b,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4261412863
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 134fd4f7eaf2ebe429378d666e91ce3b, type: 3}
@@ -1462,6 +1462,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 581392915285174260, guid: 2bf4acd121008c84fa272064172559ec,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4261412863
+      objectReference: {fileID: 0}
     - target: {fileID: 581392915355585692, guid: 2bf4acd121008c84fa272064172559ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1577,6 +1582,11 @@ PrefabInstance:
       propertyPath: m_textInfo.spaceCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 581392915385434061, guid: 2bf4acd121008c84fa272064172559ec,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4261412863
+      objectReference: {fileID: 0}
     - target: {fileID: 4708505106474138262, guid: 2bf4acd121008c84fa272064172559ec,
         type: 3}
       propertyPath: m_text
@@ -1611,6 +1621,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708505106474138262, guid: 2bf4acd121008c84fa272064172559ec,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708505106474138262, guid: 2bf4acd121008c84fa272064172559ec,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4261412863
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bf4acd121008c84fa272064172559ec, type: 3}

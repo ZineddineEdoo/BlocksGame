@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using static AchievementLoader;
 using static AchievementLoader.Achievement;
 
@@ -15,8 +14,6 @@ public class AchievementManager : MonoBehaviour
 	void Awake()
 	{
 		Loader = new AchievementLoader();
-
-		SceneManager.LoadSceneAsync(SceneChanger.MAIN_MENU_SCENE);
 
 		Globals.ScoreUpdated += (s, score) => CalculateForScore();
 	}
