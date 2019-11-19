@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static SceneController;
+using static SceneManager;
 
 public class MenuUI : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class MenuUI : MonoBehaviour
 	{
 		gameManager.GameEnding += (s, e) =>
 		{
-			SceneController.Instance.ChangeSceneTo(Scene.GameOver, GetComponentInParent<AnimationEventsManager>());
+			SceneManager.Instance.ChangeSceneTo(Scene.GameOver, GetComponentInParent<AnimationEventsManager>());
 		};
 	}
 

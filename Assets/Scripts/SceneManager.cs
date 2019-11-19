@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
-public class SceneController : MonoBehaviour
+public class SceneManager : MonoBehaviour
 {
-	public static SceneController Instance { get; private set; }
+	public static SceneManager Instance { get; private set; }
 
 #if UNITY_EDITOR
 	/// <summary>
@@ -16,7 +17,7 @@ public class SceneController : MonoBehaviour
 	public static void LoadStart()
 	{
 		if (Instance == null)
-			SceneManager.LoadSceneAsync((int)Scene.Global);
+			UnitySceneManager.LoadSceneAsync((int)Scene.Global);
 	}
 #endif
 
@@ -57,7 +58,7 @@ public class SceneController : MonoBehaviour
 #endif
 			SaveManager.Load();
 
-			SceneManager.LoadSceneAsync((int)Scene.MainMenu);
+			UnitySceneManager.LoadSceneAsync((int)Scene.MainMenu);
 			CurrentScene = Scene.MainMenu;
 		}
 	}
@@ -88,8 +89,8 @@ public class SceneController : MonoBehaviour
 
 	private void CheckPauseGame(bool shouldPause)
 	{
-		if (!SceneManager.GetSceneByBuildIndex((int)Scene.Pause).isLoaded
-			&& SceneManager.GetSceneByBuildIndex((int)Scene.Main).isLoaded
+		if (!UnitySceneManager.GetSceneByBuildIndex((int)Scene.Pause).isLoaded
+			&& UnitySceneManager.GetSceneByBuildIndex((int)Scene.Main).isLoaded
 			&& shouldPause)
 		{
 			PauseGame();
@@ -99,13 +100,13 @@ public class SceneController : MonoBehaviour
 	public void PauseGame()
 	{
 		Time.timeScale = 0f;
-		SceneManager.LoadSceneAsync((int)Scene.Pause, LoadSceneMode.Additive);
+		UnitySceneManager.LoadSceneAsync((int)Scene.Pause, LoadSceneMode.Additive);
 	}
 
 	public void ResumeGame(AnimationEventsManager animEventsManager = null)
 	{
 		if (animEventsManager == null)
-			animEventsManager = FindObjectsOfType<AnimationEventsManager>().FirstOrDefault(m => m.gameObject.scene == SceneManager.GetSceneByBuildIndex((int)Scene.Pause));
+			animEventsManager = FindObjectsOfType<AnimationEventsManager>().FirstOrDefault(m => m.gameObject.scene == UnitySceneManager.GetSceneByBuildIndex((int)Scene.Pause));
 
 		if (resumeCoroutine != null)
 			StopCoroutine(resumeCoroutine);
@@ -161,7 +162,7 @@ public class SceneController : MonoBehaviour
 	/// <summary>
 	/// Loads Current Scene
 	/// </summary>
-	public void LoadSceneImmediately() => SceneManager.LoadSceneAsync((int)CurrentScene);
+	public void LoadSceneImmediately() => UnitySceneManager.LoadSceneAsync((int)CurrentScene);
 
-	private void UnloadScene(int buildIndex) => SceneManager.UnloadSceneAsync(buildIndex);
+	private void UnloadScene(int buildIndex) => UnitySceneManager.UnloadSceneAsync(buildIndex);
 }

@@ -13,8 +13,8 @@ public class AnimationEventsManager : MonoBehaviour
 	{
 #if UNITY_EDITOR
 		// Comment To Debug Scene Without Loading Global Scene
-		if (SceneController.Instance == null)
-			SceneController.LoadStart();
+		if (SceneManager.Instance == null)
+			SceneManager.LoadStart();
 #endif
 	}
 

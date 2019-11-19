@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static SceneController;
+using static SceneManager;
 
 public class SceneNavigatorButton : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class SceneNavigatorButton : MonoBehaviour
 		{
 			var animEventsManager = GetComponentInParent<AnimationEventsManager>();
 
-			SceneController.Instance.ChangeSceneTo(destinationScene, animEventsManager);
+			SceneManager.Instance.ChangeSceneTo(destinationScene, animEventsManager);
 		});
 	}
 }

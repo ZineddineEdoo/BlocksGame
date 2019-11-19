@@ -10,6 +10,6 @@ public class ExitButton : MonoBehaviour
 {
 	void Awake()
 	{
-		GetComponent<Button>().onClick.AddListener(() => SceneController.Exit());
+		GetComponent<Button>().onClick.AddListener(() => SceneManager.Exit());
 	}
 }
