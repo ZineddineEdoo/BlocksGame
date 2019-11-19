@@ -30,8 +30,7 @@ public class DisplayOverlay : MonoBehaviour
 		overlayCoroutine = StartCoroutine(ShowOverlay(e.Message, e.ResultCallback));
 	}
 
-	// Need to prevent multiple calls
-	public IEnumerator ShowOverlay(string message, Action<Result> resultCallback)
+	private IEnumerator ShowOverlay(string message, Action<Result> resultCallback)
 	{
 		result = null;
 		messageText.SetText(message);
