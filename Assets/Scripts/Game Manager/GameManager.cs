@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 			{
 				Time.timeScale = 0f;
 
-				OverlayManager.Instance.ShowOverlay($"Resume Game For {Globals.GetCompactFormattedScoreText(Globals.Score / 2f)}?", (result) =>
+				OverlayManager.Instance.ShowOverlay($"Resume Game For -{Globals.GetCompactFormattedScoreText(Globals.ScoreAbs / 2f)} ?", (result) =>
 				{
 					if (result == OverlayManager.Result.OK)
 					{
