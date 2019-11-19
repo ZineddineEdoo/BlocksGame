@@ -9,13 +9,22 @@ public class AchievementManager : MonoBehaviour
 {
 	public event EventHandler<Achievement> AchievementCompleted;
 
+	public static AchievementManager Instance { get; private set; }
+
 	public AchievementLoader Loader { get; private set; }
 
 	void Awake()
 	{
-		Loader = new AchievementLoader();
+		if (Instance != null)
+			Destroy(this);
+		else
+		{
+			Instance = this;
 
-		Globals.ScoreUpdated += (s, score) => CalculateForScore();
+			Loader = new AchievementLoader();
+
+			Globals.ScoreUpdated += (s, score) => CalculateForScore();
+		}
 	}
 
 	private void CalculateForScore()

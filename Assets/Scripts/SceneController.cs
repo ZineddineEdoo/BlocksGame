@@ -7,26 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-	public enum Scene
-	{
-		Global,
-		MainMenu,
-		Main,
-		GameOver,
-		Pause,
-		Achievements
-	}
-
 	public static SceneController Instance { get; private set; }
 
+#if UNITY_EDITOR
 	/// <summary>
-	/// Only used in Editor; Release Builds Will Load Global Scene First
+	/// Release Builds Will Load Global Scene First
 	/// </summary>
 	public static void LoadStart()
 	{
 		if (Instance == null)
 			SceneManager.LoadSceneAsync((int)Scene.Global);
 	}
+#endif
 
 	public static void Exit()
 	{
@@ -37,12 +29,25 @@ public class SceneController : MonoBehaviour
 #endif
 	}
 
+	public enum Scene
+	{
+		Global,
+		MainMenu,
+		Main,
+		GameOver,
+		Pause,
+		Achievements
+	}
+
 	public Scene CurrentScene { get; private set; }
+
+	private Coroutine changeSceneCoroutine;
+	private Coroutine resumeCoroutine;
 
 	void Awake()
 	{
 		if (Instance != null)
-			Destroy(gameObject);
+			Destroy(this);
 		else
 		{
 			Instance = this;
@@ -97,30 +102,66 @@ public class SceneController : MonoBehaviour
 		SceneManager.LoadSceneAsync((int)Scene.Pause, LoadSceneMode.Additive);
 	}
 
-	public void ResumeGame()
+	public void ResumeGame(AnimationEventsManager animEventsManager = null)
 	{
-		UnloadScene((int)Scene.Pause);
-		Time.timeScale = 1f;
+		if (animEventsManager == null)
+			animEventsManager = FindObjectsOfType<AnimationEventsManager>().FirstOrDefault(m => m.gameObject.scene == SceneManager.GetSceneByBuildIndex((int)Scene.Pause));
+
+		if (resumeCoroutine != null)
+			StopCoroutine(resumeCoroutine);
+
+		resumeCoroutine = StartCoroutine(AnimateResumeGame(animEventsManager));
 	}
 
-	public void ChangeSceneTo(Scene scene, Animator animator = null)
+	private IEnumerator AnimateResumeGame(AnimationEventsManager animEventsManager)
+	{
+		if (animEventsManager != null)
+		{
+			animEventsManager.FadeOut();
+
+			yield return new WaitUntil(() => animEventsManager.FadedOut);
+		}
+
+		UnloadScene((int)Scene.Pause);
+		Time.timeScale = 1f;
+
+		resumeCoroutine = null;
+	}
+
+	public void ChangeSceneTo(Scene scene, AnimationEventsManager animEventsManager = null)
+	{
+		if (animEventsManager == null)
+			animEventsManager = FindObjectOfType<AnimationEventsManager>();
+
+		if (changeSceneCoroutine != null)
+			StopCoroutine(changeSceneCoroutine);
+
+		changeSceneCoroutine = StartCoroutine(AnimateChangeSceneTo(scene, animEventsManager));
+	}
+
+	private IEnumerator AnimateChangeSceneTo(Scene scene, AnimationEventsManager animEventsManager)
 	{
 		if (CurrentScene != scene)
 		{
 			CurrentScene = scene;
 
-			if (animator != null)
-				FadeOutScene(animator);
-			else
-				LoadSceneImmediately(CurrentScene);
+			if (animEventsManager != null)
+			{
+				animEventsManager.FadeOut();
+
+				yield return new WaitUntil(() => animEventsManager.FadedOut);
+			}
+
+			LoadSceneImmediately();
+
+			changeSceneCoroutine = null;
 		}
 	}
 
-	public void FadeOutScene(Animator animator) => animator.SetBool("FadeOut", true);
-
+	/// <summary>
+	/// Loads Current Scene
+	/// </summary>
 	public void LoadSceneImmediately() => SceneManager.LoadSceneAsync((int)CurrentScene);
-
-	public void LoadSceneImmediately(Scene scene) => SceneManager.LoadSceneAsync((int)scene);
 
 	private void UnloadScene(int buildIndex) => SceneManager.UnloadSceneAsync(buildIndex);
 }

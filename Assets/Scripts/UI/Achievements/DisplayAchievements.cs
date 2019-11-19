@@ -20,7 +20,7 @@ public class DisplayAchievements : MonoBehaviour
 
 	void Awake()
 	{
-		var manager = FindObjectOfType<AchievementManager>();
+		var manager = AchievementManager.Instance;
 		AchievementLoader loader;
 
 		if (manager == null)

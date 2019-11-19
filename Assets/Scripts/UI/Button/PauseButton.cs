@@ -9,6 +9,6 @@ public class PauseButton : MonoBehaviour
 {
 	void Awake()
 	{
-		GetComponent<Button>().onClick.AddListener(() => FindObjectOfType<SceneController>().PauseGame());
+		GetComponent<Button>().onClick.AddListener(() => SceneController.Instance.PauseGame());
 	}
 }

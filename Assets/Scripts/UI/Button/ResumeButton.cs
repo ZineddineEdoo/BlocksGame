@@ -11,7 +11,7 @@ public class ResumeButton : MonoBehaviour
 	{
 		GetComponent<Button>().onClick.AddListener(() => 
 		{
-			FindObjectOfType<SceneController>().FadeOutScene(GetComponentInParent<Animator>());
+			SceneController.Instance.ResumeGame(GetComponentInParent<AnimationEventsManager>());
 		});
 	}
 }

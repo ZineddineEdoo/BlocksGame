@@ -14,7 +14,10 @@ public class MenuUI : MonoBehaviour
 
 	void Awake()
 	{
-		gameManager.GameEnding += (s, e) => FindObjectOfType<SceneController>().ChangeSceneTo(Scene.GameOver, GetComponent<Animator>());
+		gameManager.GameEnding += (s, e) =>
+		{
+			SceneController.Instance.ChangeSceneTo(Scene.GameOver, GetComponentInParent<AnimationEventsManager>());
+		};
 	}
 
 	/// <summary>
