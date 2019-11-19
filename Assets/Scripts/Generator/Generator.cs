@@ -180,36 +180,11 @@ public class Generator : MonoBehaviour
 			testPos.Set(xPos, yPos);
 			
 			tries++;
-		//} while (!IsPositionClear(position, item.GetComponentInChildren<Renderer>().bounds.size));
 		} while (tries < MAX_TRIES && Physics2D.OverlapBox(testPos, item.GetComponentInChildren<Renderer>().bounds.size, 0) != null);
 		
 		if (tries < MAX_TRIES)
 			position = testPos;
 
 		return position;
-	}
-	
-	// TODO-Delete
-	private bool IsPositionClear(Vector2 position, Vector2 size)
-	{
-		bool isClear = true;
-
-		if (Physics2D.OverlapBox(position, size, 0) != null)
-			isClear = false;
-
-		//var colliders = Physics2D.OverlapAreaAll(new Vector2(-screenBounds.x, screenBounds.y), new Vector2(screenBounds.x, -screenBounds.y));
-
-		//foreach (var collider in colliders)
-		//{
-		//	var bounds = new Bounds(position, size);
-
-		//	if (collider.bounds.Intersects(bounds))
-		//	{
-		//		isClear = false;
-		//		break;
-		//	}
-		//}
-
-		return isClear;
 	}
 }
