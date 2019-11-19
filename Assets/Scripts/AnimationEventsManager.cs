@@ -9,15 +9,6 @@ public class AnimationEventsManager : MonoBehaviour
 	public bool FadedIn { get; private set; }
 	public bool FadedOut { get; private set; }
 
-	void Awake()
-	{
-#if UNITY_EDITOR
-		// Comment To Debug Scene Without Loading Global Scene
-		if (SceneManager.Instance == null)
-			SceneManager.LoadStart();
-#endif
-	}
-
 	/// <summary>
 	/// Used by Animation Event
 	/// </summary>

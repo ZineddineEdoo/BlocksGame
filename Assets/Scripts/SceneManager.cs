@@ -10,17 +10,6 @@ public class SceneManager : MonoBehaviour
 {
 	public static SceneManager Instance { get; private set; }
 
-#if UNITY_EDITOR
-	/// <summary>
-	/// Release Builds Will Load Global Scene First
-	/// </summary>
-	public static void LoadStart()
-	{
-		if (Instance == null)
-			UnitySceneManager.LoadSceneAsync((int)Scene.Global);
-	}
-#endif
-
 	public static void Exit()
 	{
 #if UNITY_EDITOR
@@ -78,6 +67,7 @@ public class SceneManager : MonoBehaviour
 		}
 		else if (Input.GetKeyDown(KeyCode.Menu))
 		{
+			// TODO Test If Necessary; Otherwise Remove
 			if (CurrentScene == Scene.Achievements || CurrentScene == Scene.GameOver)
 				ChangeSceneTo(Scene.MainMenu);
 		}
