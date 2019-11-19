@@ -686,6 +686,7 @@ GameObject:
   - component: {fileID: 943055937}
   - component: {fileID: 943055936}
   - component: {fileID: 943055935}
+  - component: {fileID: 943055939}
   m_Layer: 0
   m_Name: Application Manager
   m_TagString: Untagged
@@ -743,6 +744,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &943055939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943055934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f63ca6e9135a9a4b82d1c8f2fdf95ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1295504033
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +901,6 @@ GameObject:
   - component: {fileID: 1296013137}
   - component: {fileID: 1296013136}
   - component: {fileID: 1296013140}
-  - component: {fileID: 1296013139}
   m_Layer: 5
   m_Name: Overlay Canvas
   m_TagString: Untagged
@@ -976,19 +988,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_TargetDisplay: 0
---- !u!114 &1296013139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296013134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f63ca6e9135a9a4b82d1c8f2fdf95ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messageText: {fileID: 1507411517}
 --- !u!114 &1296013140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1015,6 +1014,7 @@ GameObject:
   - component: {fileID: 1349449406}
   - component: {fileID: 1349449409}
   - component: {fileID: 1349449410}
+  - component: {fileID: 1349449411}
   m_Layer: 5
   m_Name: Overlay Panel
   m_TagString: Untagged
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 0dcea66af7cf8a5429554af42d13497f, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1137,6 +1137,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1349449411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349449404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26c5f6bdf6bc2d4ea6b6ea27c0be781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overlayManager: {fileID: 943055939}
+  messageText: {fileID: 1507411517}
 --- !u!1 &1507411514
 GameObject:
   m_ObjectHideFlags: 0

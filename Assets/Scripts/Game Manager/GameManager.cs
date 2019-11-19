@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+	private const int MAX_RETRIES = 2;
+
 	// GameStarting -> GameStarted -> GameEnding
 	public event EventHandler GameStarting;
 	public event EventHandler GameStarted;
@@ -17,10 +19,9 @@ public class GameManager : MonoBehaviour
 	// Not In Use
 	//public float GameTime { get; private set; }
 
-	void Awake()
-	{
-		StartGame();
-	}
+	private int numRetries;
+
+	void Awake() =>	StartGame();
 
 	public void StartGame()
 	{
@@ -47,11 +48,37 @@ public class GameManager : MonoBehaviour
 	{
 		if (IsGameStarted)
 		{
-			IsGameStarted = false;
-			//GameTime = 0f;
-			Globals.CurrentStartTime = 0f;
+			if (numRetries < MAX_RETRIES)
+			{
+				Time.timeScale = 0f;
 
-			GameEnding?.Invoke(this, null);
+				OverlayManager.Instance.ShowOverlay($"Resume Game For {Globals.GetCompactFormattedScoreText(Globals.Score / 2f)}?", (result) =>
+				{
+					if (result == OverlayManager.Result.OK)
+					{
+						GetComponent<ScoreManager>().RespawnFor(Globals.Score / 2f);
+
+						numRetries++;
+						Time.timeScale = 1f;
+						// Reset Player and Blocks?
+					}
+					else
+						StopGameFully();
+				});
+			}
+			else
+				StopGameFully();
 		}
+	}
+
+	private void StopGameFully()
+	{
+		numRetries = 0;
+
+		IsGameStarted = false;
+		//GameTime = 0f;
+		Globals.CurrentStartTime = 0f;
+
+		GameEnding?.Invoke(this, null);
 	}
 }

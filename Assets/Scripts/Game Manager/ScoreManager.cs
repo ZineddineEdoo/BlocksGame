@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+	private const float RESPAWN_DELAY = 1f;
+
 	public event EventHandler<float> ScoreUpdated;
 	public event EventHandler<float> BonusScoreUpdating;
 	public event EventHandler<float> BonusScoreOneTimeUpdating;
@@ -19,13 +21,30 @@ public class ScoreManager : MonoBehaviour
 
 	private GameManager gameManager;
 	private float score;
+	private float lastRespawnTime;
+	
+	private bool CanScore
+	{ 
+		get
+		{
+			bool canScore = false;
+
+			if (lastRespawnTime == 0f || (lastRespawnTime > 0f && Time.time >= lastRespawnTime + RESPAWN_DELAY))
+			{
+				canScore = true;
+				lastRespawnTime = 0f;
+			}
+
+			return canScore;
+		} 
+	}
 
 	public float Score
 	{
 		get => score;
-		protected set
+		private set
 		{
-			if (score != value)
+			if (score != value && CanScore)
 			{
 #if INSTANT
 				score = Mathf.Clamp(value, -Globals.INSTANT_SCORE_LIMIT, Globals.INSTANT_SCORE_LIMIT);
@@ -85,7 +104,7 @@ public class ScoreManager : MonoBehaviour
 		if (Mathf.Abs(score + bonus) > Globals.INSTANT_SCORE_LIMIT)
 			bonus = Globals.INSTANT_SCORE_LIMIT - score;
 #endif
-		if (gameManager.IsGameStarted && bonus != 0f)
+		if (gameManager.IsGameStarted && bonus != 0f && CanScore)
 		{
 			BonusScoreOneTimeUpdating?.Invoke(this, bonus);
 
@@ -107,7 +126,7 @@ public class ScoreManager : MonoBehaviour
 		if (Mathf.Abs(score + bonus) > Globals.INSTANT_SCORE_LIMIT)
 			bonus = Globals.INSTANT_SCORE_LIMIT - score;
 #endif
-		if (gameManager.IsGameStarted && bonus != 0f)
+		if (gameManager.IsGameStarted && bonus != 0f && CanScore)
 		{
 			BonusScoreUpdating?.Invoke(this, bonus);
 
@@ -125,4 +144,11 @@ public class ScoreManager : MonoBehaviour
 	/// </summary>
 	/// <param name="amt">Must be multiplied by Time.deltaTime</param>
 	public void DecreaseScore(float amt) => Score -= amt > 0 ? amt : -amt;
+
+	public void RespawnFor(float amt)
+	{
+		DecreaseScore(amt);
+
+		lastRespawnTime = Time.time;
+	}
 }

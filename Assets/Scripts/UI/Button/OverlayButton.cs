@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using static OverlayManager;
 
 /// <summary>
-/// Requires OverlayManager Component in Parent Hierarchy
+/// Requires DisplayOverlay Component in Parent Hierarchy
 /// </summary>
 public class OverlayButton : MonoBehaviour
 {
@@ -19,9 +19,9 @@ public class OverlayButton : MonoBehaviour
 		GetComponent<Button>().onClick.AddListener(() =>
 		{
 			if (buttonType == Result.OK)
-				GetComponentInParent<OverlayManager>().OnOkSelected();
+				GetComponentInParent<DisplayOverlay>().OnOkSelected();
 			else
-				GetComponentInParent<OverlayManager>().OnCancelSelected();
+				GetComponentInParent<DisplayOverlay>().OnCancelSelected();
 		});
 	}
 }

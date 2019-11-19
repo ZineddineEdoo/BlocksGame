@@ -7,46 +7,26 @@ using UnityEngine;
 
 public class OverlayManager : MonoBehaviour
 {
+	public event EventHandler<(string Message, Action<Result> ResultCallback)> OverlayRequested;
+
+	public static OverlayManager Instance { get; private set; }
+
 	public enum Result
 	{
 		OK,
 		Cancel
 	}
 
-	[SerializeField]
-	private TextMeshProUGUI messageText = default;
-
-	private Result? result;
-
-	// Need to prevent multiple calls
-	public IEnumerator ShowOverlay(string message, Action<Result> resultCallback)
+	void Awake()
 	{
-		result = null;
-		messageText.SetText(message);
-
-		GetComponentInChildren<Animator>().SetBool("FadeIn", true);
-
-		yield return new WaitUntil(() => result != null);
-
-		resultCallback?.Invoke((Result) result);
+		if (Instance != null)
+			Destroy(this);
+		else
+			Instance = this;
 	}
 
-	private void HideOverlay()
+	public void ShowOverlay(string message, Action<Result> resultCallback)
 	{
-		GetComponentInChildren<Animator>().SetBool("FadeIn", false);
-
-		//messageText.SetText("");
-	}
-
-	public void OnOkSelected()
-	{
-		result = Result.OK;
-		HideOverlay();
-	}
-
-	public void OnCancelSelected()
-	{
-		result = Result.Cancel;
-		HideOverlay();
+		OverlayRequested?.Invoke(this, (message, resultCallback));
 	}
 }
