@@ -7,9 +7,15 @@ using UnityEngine;
 
 public class OverlayManager : MonoBehaviour
 {
-	public event EventHandler<(string Message, Action<Result> ResultCallback)> OverlayRequested;
+	public event EventHandler<(string Message, ActionOptions actionOptions, Action<Result> ResultCallback)> OverlayRequested;
 
 	public static OverlayManager Instance { get; private set; }
+
+	public enum ActionOptions
+	{
+		YesNo,
+		OkCancel
+	}
 
 	public enum Result
 	{
@@ -25,8 +31,8 @@ public class OverlayManager : MonoBehaviour
 			Instance = this;
 	}
 
-	public void ShowOverlay(string message, Action<Result> resultCallback)
+	public void ShowOverlay(string message, ActionOptions actionOptions, Action<Result> resultCallback)
 	{
-		OverlayRequested?.Invoke(this, (message, resultCallback));
+		OverlayRequested?.Invoke(this, (message, actionOptions, resultCallback));
 	}
 }

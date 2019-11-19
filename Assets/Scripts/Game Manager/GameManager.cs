@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 	// Not In Use
 	//public float GameTime { get; private set; }
 
-	private int numRetries;
+	private int retriesLeft;
 
 	void Awake() =>	StartGame();
 
@@ -33,8 +33,9 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator StartGameDelayed()
 	{
+		retriesLeft = MAX_RETRIES;
 		GameStarting?.Invoke(this, null);
-
+		
 		yield return new WaitUntil(() => IsUILoaded);
 
 		IsGameStarted = true;
@@ -48,23 +49,25 @@ public class GameManager : MonoBehaviour
 	{
 		if (IsGameStarted)
 		{
-			if (numRetries < MAX_RETRIES)
+			if (retriesLeft > 0)
 			{
 				Time.timeScale = 0f;
 
-				OverlayManager.Instance.ShowOverlay($"Resume Game For -{Globals.GetCompactFormattedScoreText(Globals.ScoreAbs / 2f)} ?", (result) =>
-				{
-					if (result == OverlayManager.Result.OK)
+				OverlayManager.Instance.ShowOverlay($"Resume Game For -{Globals.GetCompactFormattedScoreText(Globals.ScoreAbs / 2f)} ?\r\n{retriesLeft - 1} {(retriesLeft == 2 ? "Retry" : "Retries")} Left", 
+					OverlayManager.ActionOptions.YesNo,
+					(result) =>
 					{
-						GetComponent<ScoreManager>().RespawnFor(Globals.Score / 2f);
+						if (result == OverlayManager.Result.OK)
+						{
+							GetComponent<ScoreManager>().RespawnFor(Globals.Score / 2f);
 
-						numRetries++;
-						Time.timeScale = 1f;
-						// Reset Player and Blocks?
-					}
-					else
-						StopGameFully();
-				});
+							retriesLeft--;
+							Time.timeScale = 1f;
+							// Reset Player and Blocks?
+						}
+						else
+							StopGameFully();
+					});
 			}
 			else
 				StopGameFully();
@@ -73,8 +76,6 @@ public class GameManager : MonoBehaviour
 
 	private void StopGameFully()
 	{
-		numRetries = 0;
-
 		IsGameStarted = false;
 		//GameTime = 0f;
 		Globals.CurrentStartTime = 0f;

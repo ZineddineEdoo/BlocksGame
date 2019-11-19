@@ -13,7 +13,13 @@ public class DisplayOverlay : MonoBehaviour
 
 	[SerializeField]
 	private TextMeshProUGUI messageText = default;
-	
+
+	[SerializeField]
+	private TextMeshProUGUI okButtonText = default;
+
+	[SerializeField]
+	private TextMeshProUGUI cancelButtonText = default;
+
 	private Result? result;
 	private Coroutine overlayCoroutine;
 
@@ -22,18 +28,30 @@ public class DisplayOverlay : MonoBehaviour
 		overlayManager.OverlayRequested += OverlayManager_OverlayRequested;
 	}
 
-	private void OverlayManager_OverlayRequested(object sender, (string Message, Action<Result> ResultCallback) e)
+	private void OverlayManager_OverlayRequested(object sender, (string Message, ActionOptions ActionOptions, Action<Result> ResultCallback) e)
 	{
 		if (overlayCoroutine != null)
 			StopCoroutine(overlayCoroutine);
 
-		overlayCoroutine = StartCoroutine(ShowOverlay(e.Message, e.ResultCallback));
+		messageText.SetText(e.Message);
+
+		if (e.ActionOptions == ActionOptions.YesNo)
+		{
+			okButtonText.SetText("Yes");
+			cancelButtonText.SetText("No");
+		}
+		else if (e.ActionOptions == ActionOptions.OkCancel)
+		{
+			okButtonText.SetText("OK");
+			cancelButtonText.SetText("Cancel");
+		}
+
+		overlayCoroutine = StartCoroutine(ShowOverlay(e.ResultCallback));
 	}
 
-	private IEnumerator ShowOverlay(string message, Action<Result> resultCallback)
+	private IEnumerator ShowOverlay(Action<Result> resultCallback)
 	{
 		result = null;
-		messageText.SetText(message);
 
 		GetComponentInChildren<Animator>().SetBool("FadeIn", true);
 
