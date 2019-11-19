@@ -67,7 +67,6 @@ public class SceneManager : MonoBehaviour
 		}
 		else if (Input.GetKeyDown(KeyCode.Menu))
 		{
-			// TODO Test If Necessary; Otherwise Remove
 			if (CurrentScene == Scene.Achievements || CurrentScene == Scene.GameOver)
 				ChangeSceneTo(Scene.MainMenu);
 		}
