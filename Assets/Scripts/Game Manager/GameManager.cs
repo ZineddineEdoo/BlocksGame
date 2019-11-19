@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 		IsGameStarted = true;
 		//GameTime = Time.time;
 		Globals.CurrentStartTime = Time.time;
+		
+		Time.timeScale = 1f;
 
 		GameStarted?.Invoke(this, null);
 	}
