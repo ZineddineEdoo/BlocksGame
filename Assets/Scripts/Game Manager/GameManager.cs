@@ -53,21 +53,22 @@ public class GameManager : MonoBehaviour
 			{
 				Time.timeScale = 0f;
 
-				OverlayManager.Instance.ShowOverlay($"Resume Game For -{Globals.GetCompactFormattedScoreText(Globals.ScoreAbs / 2f)} ?\r\n{retriesLeft - 1} {(retriesLeft == 2 ? "Retry" : "Retries")} Left", 
-					OverlayManager.ActionOptions.YesNo,
-					(result) =>
-					{
-						if (result == OverlayManager.Result.OK)
-						{
-							GetComponent<ScoreManager>().RespawnFor(Globals.Score / 2f);
+				var msg = $"Resume Game For -{Globals.GetCompactFormattedScoreText(Globals.ScoreAbs / 2f)} ?\r\n\r\n" +
+					$"{retriesLeft - 1} {(retriesLeft == 2 ? "Retry" : "Retries")} Left";
 
-							retriesLeft--;
-							Time.timeScale = 1f;
-							// Reset Player and Blocks?
-						}
-						else
-							StopGameFully();
-					});
+				OverlayManager.Instance.ShowOverlay(msg, OverlayManager.ActionOptions.YesNo, (result) =>
+				{
+					if (result == OverlayManager.Result.OK)
+					{
+						GetComponent<ScoreManager>().RespawnFor(Globals.Score / 2f);
+
+						retriesLeft--;
+						Time.timeScale = 1f;
+						// Reset Player and Blocks?
+					}
+					else
+						StopGameFully();
+				});
 			}
 			else
 				StopGameFully();
