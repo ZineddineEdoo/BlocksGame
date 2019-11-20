@@ -31,7 +31,7 @@ public static class MonoBehaviourExtension
 		}
 
 		var coroutine = monoBehaviour.StartCoroutine(routine);
-		coroutines.Add(name, coroutine);		
+		coroutines.Add(name, coroutine);
 
 		return coroutine;
 	}
