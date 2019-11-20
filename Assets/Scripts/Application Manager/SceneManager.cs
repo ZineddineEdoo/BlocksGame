@@ -102,10 +102,12 @@ public class SceneManager : MonoBehaviour
 
 	private IEnumerator AnimateResumeGame(AnimationEventsManager animEventsManager)
 	{
-		// Bug Here; TODO Check
+		// Bug Here
 		if (animEventsManager == null)
-			animEventsManager = FindObjectsOfType<AnimationEventsManager>().FirstOrDefault(m => m.gameObject.scene == UnitySceneManager.GetSceneByBuildIndex((int)Scene.Pause));
-
+			animEventsManager = FindObjectsOfType<AnimationEventsManager>()
+				.FirstOrDefault(m => m.gameObject.scene == UnitySceneManager.GetSceneByBuildIndex((int)Scene.Pause));
+		
+		// Found
 		if (animEventsManager != null)
 		{
 			animEventsManager.FadeOut();
@@ -128,10 +130,10 @@ public class SceneManager : MonoBehaviour
 		{
 			CurrentScene = scene;
 
-			// TODO Check
 			if (animEventsManager == null)
 				animEventsManager = FindObjectOfType<AnimationEventsManager>();
-
+			
+			// Found
 			if (animEventsManager != null)
 			{
 				animEventsManager.FadeOut();
