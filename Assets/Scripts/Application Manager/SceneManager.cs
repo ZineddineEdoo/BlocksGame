@@ -102,7 +102,7 @@ public class SceneManager : MonoBehaviour
 
 	private IEnumerator AnimateResumeGame(AnimationEventsManager animEventsManager)
 	{
-		// Bug Here
+		// TODO Bug Here
 		if (animEventsManager == null)
 			animEventsManager = FindObjectsOfType<AnimationEventsManager>()
 				.FirstOrDefault(m => m.gameObject.scene == UnitySceneManager.GetSceneByBuildIndex((int)Scene.Pause));
