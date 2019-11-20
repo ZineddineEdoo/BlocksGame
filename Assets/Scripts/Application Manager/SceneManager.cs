@@ -72,8 +72,16 @@ public class SceneManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// If Focus is False, Game will be Paused
+	/// </summary>
+	/// <param name="focus"></param>
 	void OnApplicationFocus(bool focus) => CheckPauseGame(!focus);
 
+	/// <summary>
+	/// If Pause is True, Game will be Paused
+	/// </summary>
+	/// <param name="pause"></param>
 	void OnApplicationPause(bool pause) => CheckPauseGame(pause);
 
 	private void CheckPauseGame(bool shouldPause)
