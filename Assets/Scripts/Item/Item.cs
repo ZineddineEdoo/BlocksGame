@@ -46,7 +46,9 @@ public class Item : MonoBehaviour
 		ItemTriggering?.Invoke(this, position);
 	}
 
-	public IEnumerator DestroyGameObject()
+	public void DestroyGameObject() => this.RestartCoroutine(AnimateDestroyGameObject(), nameof(AnimateDestroyGameObject));
+
+	private IEnumerator AnimateDestroyGameObject()
 	{
 		IsDestroyed = true;
 
@@ -60,6 +62,8 @@ public class Item : MonoBehaviour
 
 		if (gameObject != null)
 			Destroy(gameObject);
+
+		this.RemoveCoroutine(nameof(DestroyGameObject));
 	}
 
 	public float CalcBonus(Vector2 position)

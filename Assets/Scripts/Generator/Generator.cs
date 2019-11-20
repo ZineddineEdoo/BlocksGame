@@ -102,7 +102,7 @@ public class Generator : MonoBehaviour
 	{
 		foreach (var item in generatedItems.Where(i => i != null))
 		{
-			StartCoroutine(item.DestroyGameObject());
+			item.DestroyGameObject();
 		}
 
 		generatedItems.Clear();

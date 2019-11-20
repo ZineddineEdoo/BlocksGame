@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 	{
 		if (!IsGameStarted)
 		{
-			StartCoroutine(StartGameDelayed());
+			this.RestartCoroutine(StartGameDelayed(), nameof(StartGameDelayed));
 		}
 	}
 
@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
 		Time.timeScale = 1f;
 
 		GameStarted?.Invoke(this, null);
+
+		this.RemoveCoroutine(nameof(StartGameDelayed));
 	}
 
 	public void StopGame()

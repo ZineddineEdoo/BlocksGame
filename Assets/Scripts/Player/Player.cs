@@ -36,7 +36,8 @@ public class Player : MonoBehaviour
 		CanMove = false;
 
 		GetComponentInChildren<Animator>().SetBool("FadeIn", false);
-		StartCoroutine(ResetPositionDelayed());
+
+		this.RestartCoroutine(ResetPositionDelayed(), nameof(ResetPositionDelayed));
 	}
 
 	private IEnumerator ResetPositionDelayed()
@@ -46,5 +47,7 @@ public class Player : MonoBehaviour
 		yield return new WaitUntil(() => animEventsManager.FadedOut);
 
 		transform.position = startPos;
+
+		this.RemoveCoroutine(nameof(ResetPositionDelayed));
 	}
 }
