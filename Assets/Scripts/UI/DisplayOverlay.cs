@@ -21,7 +21,6 @@ public class DisplayOverlay : MonoBehaviour
 	private TextMeshProUGUI cancelButtonText = default;
 
 	private Result? result;
-	private Coroutine overlayCoroutine;
 
 	void Awake()
 	{
@@ -30,9 +29,6 @@ public class DisplayOverlay : MonoBehaviour
 
 	private void OverlayManager_OverlayRequested(object sender, (string Message, ActionOptions ActionOptions, Action<Result> ResultCallback) e)
 	{
-		if (overlayCoroutine != null)
-			StopCoroutine(overlayCoroutine);
-
 		messageText.SetText(e.Message);
 
 		if (e.ActionOptions == ActionOptions.YesNo)
@@ -46,7 +42,7 @@ public class DisplayOverlay : MonoBehaviour
 			cancelButtonText.SetText("Cancel");
 		}
 
-		overlayCoroutine = StartCoroutine(ShowOverlay(e.ResultCallback));
+		this.RestartCoroutine(ShowOverlay(e.ResultCallback), nameof(ShowOverlay));
 	}
 
 	private IEnumerator ShowOverlay(Action<Result> resultCallback)
@@ -58,7 +54,7 @@ public class DisplayOverlay : MonoBehaviour
 		yield return new WaitUntil(() => result != null);
 
 		resultCallback?.Invoke((Result)result);
-		overlayCoroutine = null;
+		this.RemoveCoroutine(nameof(ShowOverlay));
 	}
 
 	private void HideOverlay()

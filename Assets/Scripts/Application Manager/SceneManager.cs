@@ -98,7 +98,7 @@ public class SceneManager : MonoBehaviour
 	}
 
 	public void ResumeGame(AnimationEventsManager animEventsManager = null) => 
-		this.RestartCoroutine(AnimateResumeGame(animEventsManager));
+		this.RestartCoroutine(AnimateResumeGame(animEventsManager), nameof(AnimateResumeGame));
 
 	private IEnumerator AnimateResumeGame(AnimationEventsManager animEventsManager)
 	{
@@ -118,11 +118,11 @@ public class SceneManager : MonoBehaviour
 		UnloadScene((int)Scene.Pause);
 		Time.timeScale = 1f;
 
-		this.RemoveCoroutine(AnimateResumeGame(animEventsManager));
+		this.RemoveCoroutine(nameof(AnimateResumeGame));
 	}
 
 	public void ChangeSceneTo(Scene scene, AnimationEventsManager animEventsManager = null) =>
-		this.RestartCoroutine(AnimateChangeSceneTo(scene, animEventsManager));
+		this.RestartCoroutine(AnimateChangeSceneTo(scene, animEventsManager), nameof(AnimateChangeSceneTo));
 
 	private IEnumerator AnimateChangeSceneTo(Scene scene, AnimationEventsManager animEventsManager)
 	{
@@ -143,7 +143,7 @@ public class SceneManager : MonoBehaviour
 
 			LoadSceneImmediately();
 
-			this.RemoveCoroutine(AnimateChangeSceneTo(scene, animEventsManager));
+			this.RemoveCoroutine(nameof(AnimateChangeSceneTo));
 		}
 	}
 

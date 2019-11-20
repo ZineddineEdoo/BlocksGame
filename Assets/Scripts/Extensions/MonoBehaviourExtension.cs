@@ -6,32 +6,44 @@ using UnityEngine;
 
 public static class MonoBehaviourExtension
 {
-	private static Dictionary<Type, Coroutine> coroutines;
+	private static Dictionary<string, Coroutine> coroutines;
 
-	public static Coroutine RestartCoroutine(this MonoBehaviour monoBehaviour, IEnumerator routine)
-	{
-		var routineType = routine.GetType();
-
+	/// <summary>
+	/// Finds if a Coroutine associated with "name" is Stored. <br/>
+	/// If found, the Coroutine is Stopped.<br/><br/>
+	/// A Coroutine for "routine" is Started and Stored with "name" as Key.
+	/// </summary>
+	/// <param name="monoBehaviour"></param>
+	/// <param name="routine">The Routine to Start</param>
+	/// <param name="name">Must be Unique for this MonoBehavior</param>
+	/// <returns></returns>
+	public static Coroutine RestartCoroutine(this MonoBehaviour monoBehaviour, IEnumerator routine, string name)
+	{		
 		if (coroutines == null)
-			coroutines = new Dictionary<Type, Coroutine>();
+			coroutines = new Dictionary<string, Coroutine>();
 		
-		if (coroutines.ContainsKey(routineType))
+		if (coroutines.ContainsKey(name))
 		{
-			if (coroutines[routineType] != null)
-				monoBehaviour.StopCoroutine(coroutines[routineType]);
+			if (coroutines[name] != null)
+				monoBehaviour.StopCoroutine(coroutines[name]);
 
-			coroutines.Remove(routineType);
+			coroutines.Remove(name);
 		}
 
 		var coroutine = monoBehaviour.StartCoroutine(routine);
-		coroutines.Add(routineType, coroutine);
+		coroutines.Add(name, coroutine);		
 
 		return coroutine;
 	}
 
-	public static void RemoveCoroutine(this MonoBehaviour monoBehaviour, IEnumerator routine)
+	/// <summary>
+	/// Removes a Coroutine Reference Without Stopping it
+	/// </summary>
+	/// <param name="monoBehaviour"></param>
+	/// <param name="routineName">Typically, nameof(Method) or nameof(Method) + "2"</param>
+	public static void RemoveCoroutine(this MonoBehaviour monoBehaviour, string routineName)
 	{
 		if (coroutines != null)
-			coroutines.Remove(routine.GetType());
+			coroutines.Remove(routineName);
 	}
 }

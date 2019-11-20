@@ -34,7 +34,6 @@ public class DifficultyManager : MonoBehaviour
 
 	private GameManager gameManager;
 	private ScoreDifficulty scoreDifficulty;
-	private Coroutine difficultyCoroutine;
 	private float lastChangeTime;
 	private Difficulty difficulty;
 
@@ -62,11 +61,7 @@ public class DifficultyManager : MonoBehaviour
 
 	private void Initialise()
 	{
-		if (difficultyCoroutine != null)
-		{
-			StopCoroutine(difficultyCoroutine);
-			difficultyCoroutine = null;
-		}
+		this.RemoveCoroutine(nameof(SetDifficulty));
 
 		CurrentDifficulty = Difficulty.Easy;
 	}
@@ -100,8 +95,7 @@ public class DifficultyManager : MonoBehaviour
 	{
 		scoreDifficulty = ScoreDifficulty.Level8;
 
-		if (difficultyCoroutine != null)
-			StopCoroutine(difficultyCoroutine);
+		this.RemoveCoroutine(nameof(SetDifficulty));
 
 		CurrentDifficulty = Difficulty.VeryHard;
 	}
@@ -191,8 +185,7 @@ public class DifficultyManager : MonoBehaviour
 	{
 		scoreDifficulty = ScoreDifficulty.Level0;
 
-		if (difficultyCoroutine != null)
-			StopCoroutine(difficultyCoroutine);
+		this.RemoveCoroutine(nameof(SetDifficulty));
 
 		CurrentDifficulty = Difficulty.Easy;
 		lastChangeTime = Time.time;
@@ -215,14 +208,9 @@ public class DifficultyManager : MonoBehaviour
 
 		CurrentDifficulty = difficulties.Last().Difficulty;
 
-		difficultyCoroutine = null;
+		this.RemoveCoroutine(nameof(SetDifficulty));
 	}
 
-	private void SetDifficultySequence((Difficulty Difficulty, float DelaySeconds)[] difficulties)
-	{
-		if (difficultyCoroutine != null)
-			StopCoroutine(difficultyCoroutine);
-
-		difficultyCoroutine = StartCoroutine(SetDifficulty(difficulties));
-	}
+	private void SetDifficultySequence((Difficulty Difficulty, float DelaySeconds)[] difficulties) =>
+		this.RestartCoroutine(SetDifficulty(difficulties), nameof(SetDifficulty));
 }

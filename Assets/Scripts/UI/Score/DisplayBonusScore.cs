@@ -17,7 +17,6 @@ public class DisplayBonusScore : MonoBehaviour
 
 	private TextMeshProUGUI bonusText;
 	private float total;
-	private Coroutine clearTextCoroutine;
 
 	void Awake()
 	{
@@ -29,9 +28,6 @@ public class DisplayBonusScore : MonoBehaviour
 
 	private void ScoreManager_BonusScoreUpdating(object sender, float bonus)
 	{
-		if (clearTextCoroutine != null)
-			StopCoroutine(clearTextCoroutine);
-
 		total += bonus;
 
 		if (total >= 0f)
@@ -45,7 +41,7 @@ public class DisplayBonusScore : MonoBehaviour
 			bonusText.color = negativeColor;
 		}
 
-		clearTextCoroutine = StartCoroutine(ClearText());
+		this.RestartCoroutine(ClearText(), nameof(ClearText));
 	}
 
 	private IEnumerator ClearText()
@@ -55,6 +51,6 @@ public class DisplayBonusScore : MonoBehaviour
 		total = 0f;
 		bonusText.SetText("");
 
-		clearTextCoroutine = null;
+		this.RemoveCoroutine(nameof(ClearText));
 	}
 }
