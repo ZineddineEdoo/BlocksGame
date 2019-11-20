@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 228011492}
   - component: {fileID: 228011493}
   - component: {fileID: 228011494}
+  - component: {fileID: 228011495}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -511,6 +512,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trialPanel: {fileID: 1444024163}
+--- !u!225 &228011495
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228011490}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &415202501
 PrefabInstance:
   m_ObjectHideFlags: 0

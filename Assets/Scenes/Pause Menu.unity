@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 672677773}
   - component: {fileID: 672677775}
   - component: {fileID: 672677774}
+  - component: {fileID: 672677776}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -292,6 +293,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &672677776
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672677772}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &768764535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -462,7 +475,7 @@ PrefabInstance:
     - target: {fileID: 7179494404685365880, guid: 669ace1358d037c4f828e9e2bced8f47,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7179494405232854976, guid: 669ace1358d037c4f828e9e2bced8f47,
         type: 3}
@@ -517,7 +530,7 @@ PrefabInstance:
     - target: {fileID: 7179494405232854977, guid: 669ace1358d037c4f828e9e2bced8f47,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7179494405232854978, guid: 669ace1358d037c4f828e9e2bced8f47,
         type: 3}
@@ -1162,7 +1175,7 @@ PrefabInstance:
     - target: {fileID: 608969024501113956, guid: 179245d476caf2c459b69ad5a45fc8c2,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7184164572385351532, guid: 179245d476caf2c459b69ad5a45fc8c2,
         type: 3}
@@ -1197,7 +1210,7 @@ PrefabInstance:
     - target: {fileID: 7184164572385351531, guid: 179245d476caf2c459b69ad5a45fc8c2,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7184164572385351530, guid: 179245d476caf2c459b69ad5a45fc8c2,
         type: 3}

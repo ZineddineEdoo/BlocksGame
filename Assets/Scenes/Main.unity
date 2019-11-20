@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 66031944}
   - component: {fileID: 66031945}
   - component: {fileID: 66031946}
+  - component: {fileID: 66031947}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -204,6 +205,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151e2a7edd2705547a18ea2b246981c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &66031947
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66031942}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &309129545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1189,7 +1202,7 @@ PrefabInstance:
     - target: {fileID: 7764268998409213130, guid: 112619a338ccd624f8c78c96a2edd6a8,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 112619a338ccd624f8c78c96a2edd6a8, type: 3}
