@@ -18,14 +18,15 @@ public class SceneNavigationOnClick : MonoBehaviour
 			var animEventsManager = GetComponentInParent<AnimationEventsManager>();
 
 			SceneManager.Instance.ChangeSceneTo(destinationScene, animEventsManager);
+			this.enabled = false;
 		}
 #else
 		if (Input.touchCount > 0)
 		{
-			var touch = Input.GetTouch(0);
 			var animEventsManager = GetComponentInParent<AnimationEventsManager>();
 
 			SceneManager.Instance.ChangeSceneTo(destinationScene, animEventsManager);
+			this.enabled = false;
 		}
 #endif
 	}
