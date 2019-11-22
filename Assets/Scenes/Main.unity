@@ -294,11 +294,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circle Character
       objectReference: {fileID: 0}
-    - target: {fileID: 7512751132764274986, guid: 167fbf1b67747b44bbfe704c67bc6b1b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4983576071835418744, guid: 167fbf1b67747b44bbfe704c67bc6b1b,
         type: 3}
       propertyPath: m_Size.x
@@ -313,6 +308,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512751132764274986, guid: 167fbf1b67747b44bbfe704c67bc6b1b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 167fbf1b67747b44bbfe704c67bc6b1b, type: 3}

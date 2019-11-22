@@ -68,7 +68,6 @@ public class GameManager : MonoBehaviour
 
 						retriesLeft--;
 						Time.timeScale = 1f;
-						// Reset Player and Blocks?
 					}
 					else
 						StopGameFully();

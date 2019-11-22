@@ -20,7 +20,7 @@ public class DisplayOverlay : MonoBehaviour
 	[SerializeField]
 	private TextMeshProUGUI cancelButtonText = default;
 
-	private Result? result;
+	private Action<Result> resultCallback;
 
 	void Awake()
 	{
@@ -42,37 +42,24 @@ public class DisplayOverlay : MonoBehaviour
 			cancelButtonText.SetText("Cancel");
 		}
 
-		this.RestartCoroutine(ShowOverlay(e.ResultCallback), nameof(ShowOverlay));
+		resultCallback = e.ResultCallback;
+
+		GetComponent<AnimationEventsManager>().FadeIn();
 	}
 
-	private IEnumerator ShowOverlay(Action<Result> resultCallback)
+	private IEnumerator HideOverlay(Result result)
 	{
-		result = null;
+		GetComponent<AnimationEventsManager>().FadeOut();
+		
+		yield return new WaitUntil(() => GetComponent<AnimationEventsManager>().FadedOut);
 
-		GetComponentInChildren<Animator>().SetBool("FadeIn", true);
-
-		yield return new WaitUntil(() => result != null);
-
-		resultCallback?.Invoke((Result)result);
-		this.RemoveCoroutine(nameof(ShowOverlay));
-	}
-
-	private void HideOverlay()
-	{
-		GetComponentInChildren<Animator>().SetBool("FadeIn", false);
-
+		resultCallback?.Invoke(result);
 		//messageText.SetText("");
 	}
 
-	public void OnOkSelected()
-	{
-		result = Result.OK;
-		HideOverlay();
-	}
+	public void OnOkSelected() =>
+		this.RestartCoroutine(HideOverlay(Result.OK), nameof(HideOverlay));
 
-	public void OnCancelSelected()
-	{
-		result = Result.Cancel;
-		HideOverlay();
-	}
+	public void OnCancelSelected() =>
+		this.RestartCoroutine(HideOverlay(Result.Cancel), nameof(HideOverlay));
 }

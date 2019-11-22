@@ -27,6 +27,19 @@ public class AnimationEventsManager : MonoBehaviour
 		FadedOut = true;
 	}
 
+	public void FadeIn()
+	{
+		var animator = GetComponentInParent<Animator>();
+
+		if (animator != null)
+		{
+			animator.SetBoolSafe("FadeIn", true);
+			animator.SetBoolSafe("FadeOut", false);
+		}
+		else
+			OnFadeInCompleted();
+	}
+
 	public void FadeOut()
 	{
 		var animator = GetComponentInParent<Animator>();

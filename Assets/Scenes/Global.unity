@@ -1014,8 +1014,9 @@ GameObject:
   - component: {fileID: 1349449406}
   - component: {fileID: 1349449409}
   - component: {fileID: 1349449410}
-  - component: {fileID: 1349449411}
   - component: {fileID: 1349449412}
+  - component: {fileID: 1349449411}
+  - component: {fileID: 1349449413}
   m_Layer: 5
   m_Name: Overlay Panel
   m_TagString: Untagged
@@ -1166,6 +1167,18 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1349449413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349449404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151e2a7edd2705547a18ea2b246981c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1507411514
 GameObject:
   m_ObjectHideFlags: 0
