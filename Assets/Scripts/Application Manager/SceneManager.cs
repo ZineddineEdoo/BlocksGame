@@ -23,6 +23,7 @@ public class SceneManager : MonoBehaviour
 	{
 		Global,
 		MainMenu,
+		Tutorial,
 		Main,
 		GameOver,
 		Pause,
