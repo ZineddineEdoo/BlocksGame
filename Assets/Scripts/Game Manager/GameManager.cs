@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 			{
 				Time.timeScale = 0f;
 
-				var msg = $"Resume Game For -{Globals.GetCompactFormattedScoreText(Globals.ScoreAbs / 2f)} ?\r\n\r\n" +
+				var msg = $"Resume Game at Score {Globals.GetCompactFormattedScoreText(Globals.Score / 2f)} ?\r\n\r\n" +
 					$"{retriesLeft - 1} {(retriesLeft == 2 ? "Retry" : "Retries")} Left";
 
 				OverlayManager.Instance.ShowOverlay(msg, OverlayManager.ActionOptions.YesNo, (result) =>
