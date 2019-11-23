@@ -32,6 +32,8 @@ public class SceneManager : MonoBehaviour
 
 	public Scene CurrentScene { get; private set; }
 
+	private bool isPaused;
+
 	void Awake()
 	{
 		if (Instance != null)
@@ -54,7 +56,7 @@ public class SceneManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			if (Time.timeScale == 0f && CurrentScene == Scene.Main)       // Paused
+			if (isPaused)
 				ResumeGame();
 			else if (CurrentScene == Scene.GameOver)
 				ChangeSceneTo(Scene.Main);
@@ -84,16 +86,13 @@ public class SceneManager : MonoBehaviour
 
 	private void CheckPauseGame(bool shouldPause)
 	{
-		if (!UnitySceneManager.GetSceneByBuildIndex((int)Scene.Pause).isLoaded
-			&& UnitySceneManager.GetSceneByBuildIndex((int)Scene.Main).isLoaded
-			&& shouldPause)
-		{
+		if (!isPaused && CurrentScene == Scene.Main	&& shouldPause)
 			PauseGame();
-		}
 	}
 
 	public void PauseGame()
 	{
+		isPaused = true;
 		Time.timeScale = 0f;
 		UnitySceneManager.LoadSceneAsync((int)Scene.Pause, LoadSceneMode.Additive);
 	}
@@ -116,6 +115,7 @@ public class SceneManager : MonoBehaviour
 		}
 
 		UnloadScene((int)Scene.Pause);
+		isPaused = false;
 		Time.timeScale = 1f;
 
 		this.RemoveCoroutine(nameof(AnimateResumeGame));
