@@ -15,9 +15,7 @@ public class SceneNavigatorButton : MonoBehaviour
 	{
 		GetComponent<Button>().onClick.AddListener(() =>
 		{
-			var animEventsManager = GetComponentInParent<AnimationEventsManager>();
-
-			SceneManager.Instance.ChangeSceneTo(destinationScene, animEventsManager);
+			SceneManager.Instance.ChangeSceneTo(destinationScene, GetComponentInParent<SceneAnimationEventsManager>());
 		});
 	}
 }

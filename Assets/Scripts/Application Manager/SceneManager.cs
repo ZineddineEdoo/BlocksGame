@@ -54,18 +54,18 @@ public class SceneManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			if (Time.timeScale == 0f)       // Paused
+			if (Time.timeScale == 0f && CurrentScene == Scene.Main)       // Paused
 				ResumeGame();
 			else if (CurrentScene == Scene.GameOver)
 				ChangeSceneTo(Scene.Main);
-			else if (CurrentScene == Scene.Achievements)
+			else if (CurrentScene == Scene.Achievements || CurrentScene == Scene.Tutorial)
 				ChangeSceneTo(Scene.MainMenu);
 			else if (CurrentScene == Scene.MainMenu)
 				Exit();
 		}
 		else if (Input.GetKeyDown(KeyCode.Menu))
 		{
-			if (CurrentScene == Scene.Achievements || CurrentScene == Scene.GameOver)
+			if (CurrentScene == Scene.Achievements || CurrentScene == Scene.GameOver || CurrentScene == Scene.Tutorial)
 				ChangeSceneTo(Scene.MainMenu);
 		}
 	}
@@ -98,14 +98,13 @@ public class SceneManager : MonoBehaviour
 		UnitySceneManager.LoadSceneAsync((int)Scene.Pause, LoadSceneMode.Additive);
 	}
 
-	public void ResumeGame(AnimationEventsManager animEventsManager = null) => 
+	public void ResumeGame(SceneAnimationEventsManager animEventsManager = null) => 
 		this.RestartCoroutine(AnimateResumeGame(animEventsManager), nameof(AnimateResumeGame));
 
-	private IEnumerator AnimateResumeGame(AnimationEventsManager animEventsManager)
+	private IEnumerator AnimateResumeGame(SceneAnimationEventsManager animEventsManager)
 	{
-		// TODO Bug Here
 		if (animEventsManager == null)
-			animEventsManager = FindObjectsOfType<AnimationEventsManager>()
+			animEventsManager = FindObjectsOfType<SceneAnimationEventsManager>()
 				.FirstOrDefault(m => m.gameObject.scene == UnitySceneManager.GetSceneByBuildIndex((int)Scene.Pause));
 		
 		// Found
@@ -122,18 +121,18 @@ public class SceneManager : MonoBehaviour
 		this.RemoveCoroutine(nameof(AnimateResumeGame));
 	}
 
-	public void ChangeSceneTo(Scene scene, AnimationEventsManager animEventsManager = null) =>
+	public void ChangeSceneTo(Scene scene, SceneAnimationEventsManager animEventsManager = null) =>
 		this.RestartCoroutine(AnimateChangeSceneTo(scene, animEventsManager), nameof(AnimateChangeSceneTo));
 
-	private IEnumerator AnimateChangeSceneTo(Scene scene, AnimationEventsManager animEventsManager)
+	private IEnumerator AnimateChangeSceneTo(Scene scene, SceneAnimationEventsManager animEventsManager)
 	{
 		if (CurrentScene != scene)
 		{
+			if (animEventsManager == null)
+				animEventsManager = FindObjectOfType<SceneAnimationEventsManager>();
+
 			CurrentScene = scene;
 
-			if (animEventsManager == null)
-				animEventsManager = FindObjectOfType<AnimationEventsManager>();
-			
 			// Found
 			if (animEventsManager != null)
 			{

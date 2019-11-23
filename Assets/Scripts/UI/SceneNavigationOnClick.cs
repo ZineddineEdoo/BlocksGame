@@ -14,20 +14,17 @@ public class SceneNavigationOnClick : MonoBehaviour
 	{
 #if UNITY_EDITOR || UNITY_STANDALONE
 		if (Input.GetMouseButton(0))
-		{
-			var animEventsManager = GetComponentInParent<AnimationEventsManager>();
-
-			SceneManager.Instance.ChangeSceneTo(destinationScene, animEventsManager);
-			this.enabled = false;
-		}
 #else
 		if (Input.touchCount > 0)
-		{
-			var animEventsManager = GetComponentInParent<AnimationEventsManager>();
-
-			SceneManager.Instance.ChangeSceneTo(destinationScene, animEventsManager);
-			this.enabled = false;
-		}
 #endif
+		{
+			ChangeScene();
+		}
+	}
+
+	private void ChangeScene()
+	{
+		SceneManager.Instance.ChangeSceneTo(destinationScene, GetComponentInParent<SceneAnimationEventsManager>());
+		this.enabled = false;
 	}
 }

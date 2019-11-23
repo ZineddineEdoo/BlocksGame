@@ -11,7 +11,7 @@ public class ResumeButton : MonoBehaviour
 	{
 		GetComponent<Button>().onClick.AddListener(() => 
 		{
-			SceneManager.Instance.ResumeGame(GetComponentInParent<AnimationEventsManager>());
+			SceneManager.Instance.ResumeGame(GetComponentInParent<SceneAnimationEventsManager>());
 		});
 	}
 }

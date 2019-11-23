@@ -16,7 +16,7 @@ public class MenuUI : MonoBehaviour
 	{
 		gameManager.GameEnding += (s, e) =>
 		{
-			SceneManager.Instance.ChangeSceneTo(Scene.GameOver, GetComponentInParent<AnimationEventsManager>());
+			SceneManager.Instance.ChangeSceneTo(Scene.GameOver, GetComponentInParent<SceneAnimationEventsManager>());
 		};
 	}
 
