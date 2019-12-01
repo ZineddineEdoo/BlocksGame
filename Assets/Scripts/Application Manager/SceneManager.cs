@@ -41,10 +41,6 @@ public class SceneManager : MonoBehaviour
 		else
 		{
 			Instance = this;
-
-#if UNITY_STANDALONE
-		Screen.SetResolution(432, 768, FullScreenMode.Windowed);
-#endif
 			SaveManager.Load();
 
 			UnitySceneManager.LoadSceneAsync((int)Scene.MainMenu);

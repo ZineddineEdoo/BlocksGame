@@ -11,7 +11,7 @@ PlayerSettings:
   defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
-  accelerometerFrequency: 60
+  accelerometerFrequency: 0
   companyName: Zineddine Edoo
   productName: Infinite BlocZ
   defaultCursor: {fileID: 0}
@@ -164,7 +164,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.Company.ProductName
+    Standalone: com.ZineddineEdoo.InfiniteBlocZ
   buildNumber: {}
   AndroidBundleVersionCode: 1003
   AndroidMinSdkVersion: 16
@@ -652,10 +652,12 @@ PlayerSettings:
     Standalone: 1
   il2cppCompilerConfiguration:
     Android: 2
-    Standalone: 2
+    Standalone: 0
+    Windows Store Apps: 0
   managedStrippingLevel:
     Android: 3
     Standalone: 3
+    Windows Store Apps: 3
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 0
   additionalIl2CppArgs: 
@@ -668,14 +670,14 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: BlocksGame
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: Assets\WSATestCertificate.pfx
-  metroCertificatePassword: 
+  metroCertificatePath: Assets/WSATestCertificate.pfx
+  metroCertificatePassword: "|m\x7F\x7F{c~h"
   metroCertificateSubject: Zineddine Edoo
   metroCertificateIssuer: Zineddine Edoo
-  metroCertificateNotAfter: 0096bca0599ed601
+  metroCertificateNotAfter: 00ba373822c7d601
   metroApplicationDescription: Template_2D
   wsaImages: {}
-  metroTileShortName: BlocksGame
+  metroTileShortName: Infinite BlocZ
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

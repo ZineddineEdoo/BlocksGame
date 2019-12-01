@@ -13,13 +13,22 @@ public class SceneNavigationOnClick : MonoBehaviour
 	void Update()
 	{
 #if UNITY_EDITOR || UNITY_STANDALONE
-		if (Input.GetMouseButton(0))
+		GetPCInput();
 #else
-		if (Input.touchCount > 0)
+		GetMobileInput();
 #endif
-		{
+	}
+	
+	private void GetMobileInput()
+	{
+		if (Input.touchCount > 0)
 			ChangeScene();
-		}
+	}
+
+	private void GetPCInput()
+	{
+		if (Input.GetMouseButton(0))
+			ChangeScene();
 	}
 
 	private void ChangeScene()

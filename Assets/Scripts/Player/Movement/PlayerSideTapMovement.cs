@@ -33,39 +33,49 @@ public class PlayerSideTapMovement : MonoBehaviour
 		if (player.CanMove)
 		{
 #if UNITY_EDITOR || UNITY_STANDALONE
-			if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
-			{
-				if (Input.mousePosition.y <= Screen.height * maxScreenHeight)
-				{
-					if (Input.mousePosition.x >= Screen.width / 2)
-						MoveRight();
-					else
-						MoveLeft();
-				}
-			}
-			else
-			{
-				var horizontal = Input.GetAxisRaw("Horizontal");
+			GetPCInput();
+#else
+			GetMobileInput();
+#endif
+		}
+	}
 
-				if (horizontal >= 1f)
+	private void GetMobileInput()
+	{
+		if (Input.touchCount > 0)
+		{
+			var touch = Input.GetTouch(0);
+
+			if (touch.position.y <= Screen.height * maxScreenHeight)
+			{
+				if (touch.position.x >= Screen.width / 2)
 					MoveRight();
-				else if (horizontal <= -1f)
+				else
 					MoveLeft();
 			}
-#else
-			if (Input.touchCount > 0)
+		}
+	}
+
+	private void GetPCInput()
+	{
+		if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+		{
+			if (Input.mousePosition.y <= Screen.height * maxScreenHeight)
 			{
-				var touch = Input.GetTouch(0);
-				
-				if (touch.position.y <= Screen.height * maxScreenHeight)
-				{
-					if (touch.position.x >= Screen.width / 2)
-						MoveRight();
-					else
-						MoveLeft();
-				}				
+				if (Input.mousePosition.x >= Screen.width / 2)
+					MoveRight();
+				else
+					MoveLeft();
 			}
-#endif
+		}
+		else
+		{
+			var horizontal = Input.GetAxisRaw("Horizontal");
+
+			if (horizontal >= 1f)
+				MoveRight();
+			else if (horizontal <= -1f)
+				MoveLeft();
 		}
 	}
 
