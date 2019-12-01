@@ -23,7 +23,7 @@ public static class Globals
 		{
 			if (score != value)
 			{
-#if INSTANT
+#if DEMO
 				score = Mathf.Clamp(value, -INSTANT_SCORE_LIMIT, INSTANT_SCORE_LIMIT);
 #else
 				score = value;

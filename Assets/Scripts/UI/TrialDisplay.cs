@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-#if !INSTANT
+#if !DEMO
 #pragma warning disable 0414
 #endif
 
@@ -13,7 +13,7 @@ public class TrialDisplay : MonoBehaviour
 	[SerializeField]
 	private RectTransform trialPanel = default;
 
-#if INSTANT
+#if DEMO
 	void Awake()
 	{
 		trialPanel.gameObject.SetActive(true);
@@ -21,6 +21,6 @@ public class TrialDisplay : MonoBehaviour
 #endif
 }
 
-#if !INSTANT
+#if !DEMO
 #pragma warning restore 0414
 #endif

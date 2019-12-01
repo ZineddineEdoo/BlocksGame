@@ -19,7 +19,7 @@ public class BuildManager : MonoBehaviour
 
 	private void CheckVersion()
 	{
-#if INSTANT
+#if DEMO
 		Debug.Log("Instant Version");
 #else
 		Debug.Log("Full Version");

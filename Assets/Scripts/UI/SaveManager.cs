@@ -26,7 +26,7 @@ public static class SaveManager
 
 	public static void Save()
 	{
-#if !INSTANT
+#if !DEMO
 		try
 		{
 			using (var fileStream = new FileStream(SAVE_FILE_PATH, FileMode.OpenOrCreate))
@@ -49,7 +49,7 @@ public static class SaveManager
 	{
 		if (currentSaveData == null)
 		{
-#if INSTANT
+#if DEMO
 			currentSaveData = new SaveData();
 #else
 			try

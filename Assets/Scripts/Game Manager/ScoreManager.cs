@@ -46,7 +46,7 @@ public class ScoreManager : MonoBehaviour
 		{
 			if (score != value && CanScore)
 			{
-#if INSTANT
+#if DEMO
 				score = Mathf.Clamp(value, -Globals.INSTANT_SCORE_LIMIT, Globals.INSTANT_SCORE_LIMIT);
 #else
 				score = value;
@@ -100,7 +100,7 @@ public class ScoreManager : MonoBehaviour
 	/// <param name="bonus"></param>
 	public void AddOneTimeBonus(float bonus)
 	{
-#if INSTANT
+#if DEMO
 		if (Mathf.Abs(score + bonus) > Globals.INSTANT_SCORE_LIMIT)
 			bonus = Globals.INSTANT_SCORE_LIMIT - score;
 #endif
@@ -122,7 +122,7 @@ public class ScoreManager : MonoBehaviour
 	/// <param name="bonus">Must be multiplied by Time.deltaTime</param>
 	public void AddBonus(float bonus)
 	{
-#if INSTANT
+#if DEMO
 		if (Mathf.Abs(score + bonus) > Globals.INSTANT_SCORE_LIMIT)
 			bonus = Globals.INSTANT_SCORE_LIMIT - score;
 #endif

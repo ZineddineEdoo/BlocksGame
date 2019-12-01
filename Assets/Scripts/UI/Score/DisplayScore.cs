@@ -23,7 +23,7 @@ public class DisplayScore : MonoBehaviour
 	{
 		var formattedText = Globals.GetFormattedScoreText(Globals.Score, isFullDisplay);
 
-#if !INSTANT
+#if !DEMO
 		textUI.SetText(formattedText);
 #else
 		if (Mathf.Abs(Globals.Score) >= Globals.INSTANT_SCORE_LIMIT)
