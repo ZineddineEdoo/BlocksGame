@@ -671,11 +671,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: 57565ZineddineEdoo.InfiniteBlocZ
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: Assets\WSATestCertificate.pfx
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: Zineddine Edoo
-  metroCertificateIssuer: Zineddine Edoo
-  metroCertificateNotAfter: 802ea3a80ec9d601
+  metroCertificateSubject: CN=FB0D94A6-B731-4C0D-8A20-AFB4A9C7D85D
+  metroCertificateIssuer: CN=FB0D94A6-B731-4C0D-8A20-AFB4A9C7D85D
+  metroCertificateNotAfter: 00cbdc7090c9d601
   metroApplicationDescription: Infinite BlocZ
   wsaImages:
     65636: Assets/Icons/UWP/StoreLogo.scale-100.png
