@@ -22,7 +22,7 @@ public class PlayerSideTapMovement : MonoBehaviour
 	void Start()
 	{
 		player = GetComponent<Player>();
-		gameBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+		gameBounds = BuildManager.ScreenBounds;
 		halfWidth = GetComponentInChildren<Collider2D>().bounds.extents.x;
 
 		gameBounds.x -= halfWidth;
@@ -32,7 +32,7 @@ public class PlayerSideTapMovement : MonoBehaviour
 	{
 		if (player.CanMove)
 		{
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_WSA
 			GetPCInput();
 #else
 			GetMobileInput();

@@ -62,7 +62,6 @@ public class Generator : MonoBehaviour
 	private List<Difficulty> difficulties = default;
 	#endregion
 
-	private Vector2 screenBounds;
 	private List<Item> generatedItems;
 
 	public IReadOnlyList<Item> GeneratedItems => generatedItems;
@@ -95,7 +94,6 @@ public class Generator : MonoBehaviour
 	void Awake()
 	{
 		generatedItems = new List<Item>();
-		screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 	}
 
 	public void DeleteItems()
@@ -155,7 +153,7 @@ public class Generator : MonoBehaviour
 		Vector2? position = null;
 
 		// To prevent Instantiating outside Screen Bounds
-		var gameBounds = screenBounds - item.GetRendererExtentBounds();
+		var gameBounds = BuildManager.ScreenBounds - item.GetRendererExtentBounds();
 
 		if (generateOutside)
 		{

@@ -12,7 +12,7 @@ public class SceneNavigationOnClick : MonoBehaviour
 
 	void Update()
 	{
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_WSA
 		GetPCInput();
 #else
 		GetMobileInput();

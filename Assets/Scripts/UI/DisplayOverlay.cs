@@ -44,14 +44,14 @@ public class DisplayOverlay : MonoBehaviour
 
 		resultCallback = e.ResultCallback;
 
-		GetComponent<AnimationEventsManager>().FadeIn();
+		GetComponentInParent<AnimationEventsManager>().FadeIn();
 	}
 
 	private IEnumerator HideOverlay(Result result)
 	{
-		GetComponent<AnimationEventsManager>().FadeOut();
+		GetComponentInParent<AnimationEventsManager>().FadeOut();
 		
-		yield return new WaitUntil(() => GetComponent<AnimationEventsManager>().FadedOut);
+		yield return new WaitUntil(() => GetComponentInParent<AnimationEventsManager>().FadedOut);
 
 		resultCallback?.Invoke(result);
 		//messageText.SetText("");

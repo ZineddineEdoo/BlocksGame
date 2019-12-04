@@ -671,11 +671,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: BlocksGame
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: Assets/WSATestCertificate.pfx
-  metroCertificatePassword: "|m\x7F\x7F{c~h"
+  metroCertificatePath: Assets\WSATestCertificate.pfx
+  metroCertificatePassword: 
   metroCertificateSubject: Zineddine Edoo
   metroCertificateIssuer: Zineddine Edoo
-  metroCertificateNotAfter: 00ba373822c7d601
+  metroCertificateNotAfter: 802ea3a80ec9d601
   metroApplicationDescription: Template_2D
   wsaImages: {}
   metroTileShortName: Infinite BlocZ

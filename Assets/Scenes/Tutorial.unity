@@ -542,6 +542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 418823660}
+  - component: {fileID: 418823665}
   - component: {fileID: 418823661}
   - component: {fileID: 418823662}
   - component: {fileID: 418823664}
@@ -571,7 +572,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -631,6 +632,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7a33f167c75eb4a93a4e1a87424106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &418823665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418823659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 0.5625
 --- !u!1 &472157921
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,11 +729,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 418823660}
     m_Modifications:
-    - target: {fileID: 1033730095159681275, guid: 8dacf7040524c4a4a953382d8ccd9b5d,
-        type: 3}
-      propertyPath: m_Name
-      value: Background
-      objectReference: {fileID: 0}
     - target: {fileID: 1033730095159681272, guid: 8dacf7040524c4a4a953382d8ccd9b5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -823,6 +833,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033730095159681275, guid: 8dacf7040524c4a4a953382d8ccd9b5d,
+        type: 3}
+      propertyPath: m_Name
+      value: Background
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dacf7040524c4a4a953382d8ccd9b5d, type: 3}
