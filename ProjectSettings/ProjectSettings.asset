@@ -654,7 +654,7 @@ PlayerSettings:
   il2cppCompilerConfiguration:
     Android: 2
     Standalone: 2
-    Windows Store Apps: 0
+    Windows Store Apps: 2
   managedStrippingLevel:
     Android: 3
     Standalone: 3
@@ -669,14 +669,14 @@ PlayerSettings:
     Windows Store Apps: 6
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: BlocksGame
+  metroPackageName: 57565ZineddineEdoo.InfiniteBlocZ
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: Zineddine Edoo
   metroCertificateIssuer: Zineddine Edoo
   metroCertificateNotAfter: 802ea3a80ec9d601
-  metroApplicationDescription: Template_2D
+  metroApplicationDescription: Infinite BlocZ
   wsaImages:
     65636: Assets/Icons/UWP/StoreLogo.scale-100.png
     65661: Assets/Icons/UWP/StoreLogo.scale-125.png
@@ -772,7 +772,7 @@ PlayerSettings:
     IoTHeadless: False
     Mobile: True
     Team: False
-    Xbox: False
+    Xbox: True
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 
