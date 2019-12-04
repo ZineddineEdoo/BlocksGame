@@ -120,7 +120,7 @@ PlayerSettings:
     16:10: 0
     16:9: 0
     Others: 1
-  bundleVersion: 1.0.4
+  bundleVersion: 1.0.5
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -670,7 +670,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: 57565ZineddineEdoo.InfiniteBlocZ
-  metroPackageVersion: 1.0.0.0
+  metroPackageVersion: 1.0.5.0
   metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: FB0D94A6-B731-4C0D-8A20-AFB4A9C7D85D
