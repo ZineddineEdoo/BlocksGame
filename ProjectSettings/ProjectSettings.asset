@@ -673,9 +673,9 @@ PlayerSettings:
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: CN=FB0D94A6-B731-4C0D-8A20-AFB4A9C7D85D
-  metroCertificateIssuer: CN=FB0D94A6-B731-4C0D-8A20-AFB4A9C7D85D
-  metroCertificateNotAfter: 00cbdc7090c9d601
+  metroCertificateSubject: FB0D94A6-B731-4C0D-8A20-AFB4A9C7D85D
+  metroCertificateIssuer: FB0D94A6-B731-4C0D-8A20-AFB4A9C7D85D
+  metroCertificateNotAfter: 0071a79f91c9d601
   metroApplicationDescription: Infinite BlocZ
   wsaImages:
     65636: Assets/Icons/UWP/StoreLogo.scale-100.png
