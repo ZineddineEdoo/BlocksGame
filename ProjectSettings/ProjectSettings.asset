@@ -677,12 +677,47 @@ PlayerSettings:
   metroCertificateIssuer: Zineddine Edoo
   metroCertificateNotAfter: 802ea3a80ec9d601
   metroApplicationDescription: Template_2D
-  wsaImages: {}
+  wsaImages:
+    65636: Assets/Icons/UWP/StoreLogo.scale-100.png
+    65661: Assets/Icons/UWP/StoreLogo.scale-125.png
+    65686: Assets/Icons/UWP/StoreLogo.scale-150.png
+    65736: Assets/Icons/UWP/StoreLogo.scale-200.png
+    65936: Assets/Icons/UWP/StoreLogo.scale-400.png
+    2031632: Assets/Icons/UWP/Square44x44Logo.altform-lightunplated_targetsize-16.png
+    2031640: Assets/Icons/UWP/Square44x44Logo.altform-lightunplated_targetsize-24.png
+    2031648: Assets/Icons/UWP/Square44x44Logo.altform-lightunplated_targetsize-32.png
+    2031664: Assets/Icons/UWP/Square44x44Logo.altform-lightunplated_targetsize-48.png
+    2031716: Assets/Icons/UWP/Square44x44Logo.scale-100.png
+    2031741: Assets/Icons/UWP/Square44x44Logo.scale-125.png
+    2031766: Assets/Icons/UWP/Square44x44Logo.scale-150.png
+    2031816: Assets/Icons/UWP/Square44x44Logo.scale-200.png
+    2031872: Assets/Icons/UWP/Square44x44Logo.altform-lightunplated_targetsize-256.png
+    2032016: Assets/Icons/UWP/Square44x44Logo.scale-400.png
+    2097252: Assets/Icons/UWP/SmallTile.scale-100.png
+    2097277: Assets/Icons/UWP/SmallTile.scale-125.png
+    2097302: Assets/Icons/UWP/SmallTile.scale-150.png
+    2097352: Assets/Icons/UWP/SmallTile.scale-200.png
+    2097552: Assets/Icons/UWP/SmallTile.scale-400.png
+    2162788: Assets/Icons/UWP/Square150x150Logo.scale-100.png
+    2162813: Assets/Icons/UWP/Square150x150Logo.scale-125.png
+    2162838: Assets/Icons/UWP/Square150x150Logo.scale-150.png
+    2162888: Assets/Icons/UWP/Square150x150Logo.scale-200.png
+    2163088: Assets/Icons/UWP/Square150x150Logo.scale-400.png
+    2228324: Assets/Icons/UWP/LargeTile.scale-100.png
+    2228349: Assets/Icons/UWP/LargeTile.scale-125.png
+    2228374: Assets/Icons/UWP/LargeTile.scale-150.png
+    2228424: Assets/Icons/UWP/LargeTile.scale-200.png
+    2228624: Assets/Icons/UWP/LargeTile.scale-400.png
+    2293860: Assets/Icons/UWP/Wide310x150Logo.scale-100.png
+    2293885: Assets/Icons/UWP/Wide310x150Logo.scale-125.png
+    2293910: Assets/Icons/UWP/Wide310x150Logo.scale-150.png
+    2293960: Assets/Icons/UWP/Wide310x150Logo.scale-200.png
+    2294160: Assets/Icons/UWP/Wide310x150Logo.scale-400.png
   metroTileShortName: Infinite BlocZ
   metroTileShowName: 0
-  metroMediumTileShowName: 0
-  metroLargeTileShowName: 0
-  metroWideTileShowName: 0
+  metroMediumTileShowName: 1
+  metroLargeTileShowName: 1
+  metroWideTileShowName: 1
   metroSupportStreamingInstall: 0
   metroLastRequiredScene: 0
   metroDefaultTileSize: 1
