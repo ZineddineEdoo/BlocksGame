@@ -773,7 +773,7 @@ PlayerSettings:
     IoTHeadless: False
     Mobile: True
     Team: False
-    Xbox: True
+    Xbox: False
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 
