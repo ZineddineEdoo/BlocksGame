@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	private const int MAX_RETRIES = 2;
+	private const float RESPAWN_DELAY = 1f;		// Seconds
 
 	// GameStarting -> GameStarted -> GameEnding
 	public event EventHandler GameStarting;
@@ -19,7 +20,24 @@ public class GameManager : MonoBehaviour
 	// Not In Use
 	//public float GameTime { get; private set; }
 
+	public bool IsRespawning
+	{
+		get
+		{
+			bool respawning = true;
+
+			if (lastRespawnTime == 0f || (lastRespawnTime > 0f && Time.time >= lastRespawnTime + RESPAWN_DELAY))
+			{
+				respawning = false;
+				lastRespawnTime = 0f;
+			}
+
+			return respawning;
+		}
+	}
+
 	private int retriesLeft;
+	private float lastRespawnTime;
 
 	void Awake() =>	StartGame();
 
@@ -51,7 +69,7 @@ public class GameManager : MonoBehaviour
 
 	public void StopGame()
 	{
-		if (IsGameStarted)
+		if (IsGameStarted && !IsRespawning)
 		{
 			if (retriesLeft > 0)
 			{
@@ -64,9 +82,10 @@ public class GameManager : MonoBehaviour
 				{
 					if (result == OverlayManager.Result.OK)
 					{
-						GetComponent<ScoreManager>().RespawnFor(Globals.Score / 2f);
+						GetComponent<ScoreManager>().DecreaseScore(Globals.Score / 2f);
 
 						retriesLeft--;
+						lastRespawnTime = Time.time;
 						Time.timeScale = 1f;
 					}
 					else
