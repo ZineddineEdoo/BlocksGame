@@ -33,6 +33,7 @@ public class SceneManager : MonoBehaviour
 	public Scene CurrentScene { get; private set; }
 
 	private bool isPaused;
+	private Stack<Scene> additiveScenes;
 
 	void Awake()
 	{
@@ -41,6 +42,8 @@ public class SceneManager : MonoBehaviour
 		else
 		{
 			Instance = this;
+			additiveScenes = new Stack<Scene>();
+
 			SaveManager.Load();
 
 			UnitySceneManager.LoadSceneAsync((int)Scene.MainMenu);
@@ -52,18 +55,20 @@ public class SceneManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			if (isPaused)
+			if (additiveScenes.Count > 0 && additiveScenes.Peek() != Scene.Pause)
+				UnloadLastAdditiveScene();
+			else if (isPaused)
 				ResumeGame();
 			else if (CurrentScene == Scene.GameOver)
 				ChangeSceneTo(Scene.Main);
-			else if (CurrentScene == Scene.Achievements || CurrentScene == Scene.Tutorial)
+			else if (CurrentScene == Scene.Tutorial)
 				ChangeSceneTo(Scene.MainMenu);
 			else if (CurrentScene == Scene.MainMenu)
 				Exit();
 		}
 		else if (Input.GetKeyDown(KeyCode.Menu))
 		{
-			if (CurrentScene == Scene.Achievements || CurrentScene == Scene.GameOver || CurrentScene == Scene.Tutorial)
+			if (CurrentScene == Scene.GameOver || CurrentScene == Scene.Tutorial)
 				ChangeSceneTo(Scene.MainMenu);
 		}
 	}
@@ -90,31 +95,58 @@ public class SceneManager : MonoBehaviour
 	{
 		isPaused = true;
 		Time.timeScale = 0f;
-		UnitySceneManager.LoadSceneAsync((int)Scene.Pause, LoadSceneMode.Additive);
+		LoadAdditiveScene(Scene.Pause);
 	}
 
-	public void ResumeGame(SceneAnimationEventsManager animEventsManager = null) => 
-		this.RestartCoroutine(AnimateResumeGame(animEventsManager), nameof(AnimateResumeGame));
-
-	private IEnumerator AnimateResumeGame(SceneAnimationEventsManager animEventsManager)
+	public void ResumeGame(SceneAnimationEventsManager animEventsManager = null)
 	{
-		if (animEventsManager == null)
-			animEventsManager = FindObjectsOfType<SceneAnimationEventsManager>()
-				.FirstOrDefault(m => m.gameObject.scene == UnitySceneManager.GetSceneByBuildIndex((int)Scene.Pause));
-		
-		// Found
-		if (animEventsManager != null)
+		UnloadLastAdditiveScene(animEventsManager, () =>
 		{
-			animEventsManager.FadeOut();
+			isPaused = false;
+			Time.timeScale = 1f;
+		});
+	}
 
-			yield return new WaitUntil(() => animEventsManager.FadedOut);
+	/// <summary>
+	/// Loads scene only if not already loaded
+	/// </summary>
+	/// <param name="scene"></param>
+	public void LoadAdditiveScene(Scene scene)
+	{
+		if (!additiveScenes.Contains(scene))
+		{
+			UnitySceneManager.LoadSceneAsync((int)scene, LoadSceneMode.Additive);
+
+			additiveScenes.Push(scene);
+		}
+	}
+
+	public void UnloadLastAdditiveScene(SceneAnimationEventsManager animEventsManager = null, Action onUnloaded = null) =>
+		this.RestartCoroutine(AnimateUnloadAdditiveScene(animEventsManager, onUnloaded), nameof(AnimateUnloadAdditiveScene));
+
+	private IEnumerator AnimateUnloadAdditiveScene(SceneAnimationEventsManager animEventsManager, Action onUnloaded = null)
+	{
+		if (additiveScenes.Count > 0)
+		{
+			if (animEventsManager == null)
+				animEventsManager = FindObjectsOfType<SceneAnimationEventsManager>()
+					.FirstOrDefault(m => m.gameObject.scene == UnitySceneManager.GetSceneByBuildIndex((int)additiveScenes.Peek()));
+
+			// Found
+			if (animEventsManager != null)
+			{
+				animEventsManager.FadeOut();
+
+				yield return new WaitUntil(() => animEventsManager.FadedOut);
+			}
+
+			var scene = additiveScenes.Pop();
+
+			UnloadScene((int)scene);
+			onUnloaded?.Invoke();
 		}
 
-		UnloadScene((int)Scene.Pause);
-		isPaused = false;
-		Time.timeScale = 1f;
-
-		this.RemoveCoroutine(nameof(AnimateResumeGame));
+		this.RemoveCoroutine(nameof(AnimateUnloadAdditiveScene));
 	}
 
 	public void ChangeSceneTo(Scene scene, SceneAnimationEventsManager animEventsManager = null) =>
