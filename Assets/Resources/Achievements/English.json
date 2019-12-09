@@ -2,44 +2,54 @@
 	"KeyValues":
 	[
 		{
-			"Key": "Score 1K",
-			"Value": "Get a Score of 1K in a Single Game"
+			"Key": "Score1K",
+			"Header": "Score 1K",
+			"Description": "Get a Score of 1K in a Single Game"
 		},
 		{
-			"Key": "Score 10K",
-			"Value": "Get a Score of 10K in a Single Game"
+			"Key": "Score10K",
+			"Header": "Score 10K",
+			"Description": "Get a Score of 10K in a Single Game"
 		},
 		{
-			"Key": "Score 100K",
-			"Value": "Get a Score of 100K in a Single Game"
+			"Key": "Score100K",
+			"Header": "Score 100K",
+			"Description": "Get a Score of 100K in a Single Game"
 		},
 		{
-			"Key": "Score 1M",
-			"Value": "Get a Score of 1M in a Single Game"
+			"Key": "Score1M",
+			"Header": "Score 1M",
+			"Description": "Get a Score of 1M in a Single Game"
 		},
 		{
-			"Key": "Score 10M",
-			"Value": "Get a Score of 10M in a Single Game"
+			"Key": "Score10M",
+			"Header": "Score 10M",
+			"Description": "Get a Score of 10M in a Single Game"
 		},
 		{
-			"Key": "Score 100M",
-			"Value": "Get a Score of 100M in a Single Game"
+			"Key": "Score100M",
+			"Header": "Score 100M",
+			"Description": "Get a Score of 100M in a Single Game"
 		},
 		{
-			"Key": "Score -1K",
-			"Value": "Get a Score of -1K in a Single Game"
+			"Key": "ScoreN1K",
+			"Header": "Score -1K",
+			"Description": "Get a Score of -1K in a Single Game"
 		},
 		{
-			"Key": "Score -10K",
-			"Value": "Get a Score of -10K in a Single Game"
+			"Key": "ScoreN10K",
+			"Header": "Score -10K",
+			"Description": "Get a Score of -10K in a Single Game"
 		},
 		{
-			"Key": "Score -100K",
-			"Value": "Get a Score of -100K in a Single Game"
+			"Key": "ScoreN100K",
+			"Header": "Score -100K",
+			"Description": "Get a Score of -100K in a Single Game"
 		},
 		{
-			"Key": "Score -1M",
-			"Value": "Get a Score of -1M in a Single Game"
+			"Key": "ScoreN1M",
+			"Header": "Score -1M",
+			"Description": "Get a Score of -1M in a Single Game"
 		}
 	]
 }

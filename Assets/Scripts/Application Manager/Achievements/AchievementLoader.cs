@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using static AchievementLoader.Achievement;
 
 public class AchievementLoader
 {
 	public class Achievement
 	{
-		/// <summary>
-		/// Order Must match Json File
-		/// </summary>
 		public enum AchievementID
 		{
 			Score1K,
@@ -36,16 +34,17 @@ public class AchievementLoader
 	{
 		var achievements = new List<Achievement>();
 
-		int id = 0;
 		foreach (var kv in StringLoader.LoadAchievementStrings().KeyValues)
 		{
-			achievements.Add(new Achievement()
+			if (Enum.TryParse(kv.Key, out AchievementID id) && !achievements.Any(a => a.ID == id))
 			{
-				ID = (AchievementID)Enum.Parse(typeof(AchievementID), id.ToString()),
-				Name = kv.Key,
-				Detail = kv.Value
-			});
-			id++;
+				achievements.Add(new Achievement()
+				{
+					ID = id,
+					Name = kv.Header,
+					Detail = kv.Description
+				});
+			}
 		}
 
 		return achievements;

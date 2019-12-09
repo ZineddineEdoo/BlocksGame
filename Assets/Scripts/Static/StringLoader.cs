@@ -19,7 +19,21 @@ public static class StringLoader
 		public KeyValue[] KeyValues;
 	}
 
-	public static KeyValueArray LoadAchievementStrings()
+	[Serializable]
+	public struct KeyHeaderDescription
+	{
+		public string Key;
+		public string Header;
+		public string Description;
+	}
+
+	[Serializable]
+	public struct KeyHeaderDescriptionArray
+	{
+		public KeyHeaderDescription[] KeyValues;
+	}
+
+	public static KeyHeaderDescriptionArray LoadAchievementStrings()
 	{
 		TextAsset textAsset;
 
@@ -28,6 +42,6 @@ public static class StringLoader
 		else
 			textAsset = Resources.Load<TextAsset>("Achievements/English");
 
-		return JsonUtility.FromJson<KeyValueArray>(textAsset.text);
+		return JsonUtility.FromJson<KeyHeaderDescriptionArray>(textAsset.text);
 	}
 }
