@@ -614,6 +614,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Overlay Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9060443186633303598, guid: 28180a7fcd394de4b96f0669f63a3fb7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9060443186633303599, guid: 28180a7fcd394de4b96f0669f63a3fb7,
         type: 3}
       propertyPath: m_LocalPosition.x
