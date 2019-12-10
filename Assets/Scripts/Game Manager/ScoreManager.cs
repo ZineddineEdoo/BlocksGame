@@ -118,8 +118,6 @@ public class ScoreManager : MonoBehaviour
 				IncreaseScore(bonus);
 			else
 				DecreaseScore(bonus);
-
-			Globals.Bonus += bonus;
 		}
 	}
 
