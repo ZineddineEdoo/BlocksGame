@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static AchievementLoader;
-using static AchievementLoader.Achievement;
+using static Achievement;
 
 [Serializable]
 public class SaveData

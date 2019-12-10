@@ -1,0 +1,13 @@
+{
+	"KeyValues":
+	[
+		{
+			"Key": "GetScoreOfSingleGame",
+			"Value": "Get a Score of {0} in a Single Game"
+		},
+		{
+			"Key": "Score",
+			"Value": "Score {0}"
+		}
+	]
+}

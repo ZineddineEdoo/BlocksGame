@@ -19,17 +19,19 @@ public class DisplayAchievements : MonoBehaviour
 
 	void Awake()
 	{
-		var manager = AchievementManager.Instance;
-		AchievementLoader loader;
+#if UNITY_EDITOR
+		if (AchievementManager.Instance == null)
+		{
+			var tempManagerObj = Instantiate(new GameObject());
+			tempManagerObj.AddComponent<StringManager>();
+			tempManagerObj.AddComponent<AchievementManager>();
+		}
+#endif
+		var achievements = AchievementManager.Instance.Achievements;
 
-		if (manager == null)
-			loader = new AchievementLoader();
-		else
-			loader = manager.Loader;
+		headerText.SetText($"Achievements ({SaveManager.CurrentSaveData.Achievements.Count}/{achievements.Count})");
 
-		headerText.SetText($"Achievements ({SaveManager.CurrentSaveData.Achievements.Count}/{loader.Achievements.Count})");
-
-		foreach (var achievement in loader.Achievements)
+		foreach (var achievement in achievements)
 		{
 			var achievementUI = Instantiate(achievementPrefab, achievementsGroup.transform);
 
