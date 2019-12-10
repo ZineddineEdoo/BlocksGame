@@ -799,7 +799,7 @@ PrefabInstance:
     - target: {fileID: 9060443186633303589, guid: 28180a7fcd394de4b96f0669f63a3fb7,
         type: 3}
       propertyPath: m_Name
-      value: Achievment Canvas
+      value: Achievement Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 9060443186633303599, guid: 28180a7fcd394de4b96f0669f63a3fb7,
         type: 3}
