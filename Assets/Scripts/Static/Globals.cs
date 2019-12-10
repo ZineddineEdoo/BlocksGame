@@ -13,10 +13,12 @@ public static class Globals
 	public const float INSTANT_SCORE_LIMIT = 200 * THOUSAND;
 
 	private static float score;
+	private static float bonus;
 
 	public static event EventHandler<float> ScoreUpdated;
+	public static event EventHandler<float> BonusUpdated;
 
-	public static float Score 
+	public static float Score
 	{
 		get => score;
 		set
@@ -29,6 +31,20 @@ public static class Globals
 				score = value;
 #endif
 				ScoreUpdated?.Invoke(null, score);
+			}
+		}
+	}
+
+	public static float Bonus 
+	{ 
+		get => bonus;
+		set
+		{
+			if (bonus != value)
+			{
+				bonus = value;
+
+				BonusUpdated?.Invoke(null, bonus);
 			}
 		}
 	}
@@ -49,7 +65,7 @@ public static class Globals
 		string disp;
 
 		if (Mathf.Abs(score) >= BILLION)
-			disp = isCompactDisplay ? $"{score / BILLION:0}B": $"{score / BILLION:0.00}B";
+			disp = isCompactDisplay ? $"{score / BILLION:0}B" : $"{score / BILLION:0.00}B";
 		else if (Mathf.Abs(score) >= MILLION)
 			disp = isCompactDisplay ? $"{score / MILLION:0}M" : $"{score / MILLION:0.00}M";
 		else if (Mathf.Abs(score) >= THOUSAND)

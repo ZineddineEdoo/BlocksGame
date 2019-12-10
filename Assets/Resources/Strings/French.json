@@ -2,12 +2,20 @@
 	"KeyValues":
 	[
 		{
+			"Key": "Score",
+			"Value": "Score {0}"
+		},
+		{
 			"Key": "GetScoreOfSingleGame",
 			"Value": "Get a Score of {0} in a Single Game"
 		},
 		{
-			"Key": "Score",
-			"Value": "Score {0}"
+			"Key": "ScoreBonus",
+			"Value": "Score {0} Bonus"
+		},
+		{
+			"Key": "GetBonusOfSingleGame",
+			"Value": "Get a Bonus Score of {0} in a Single Game"
 		}
 	]
 }

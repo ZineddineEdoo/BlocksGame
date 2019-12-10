@@ -19,19 +19,17 @@ public class DisplayAchievementNotification : MonoBehaviour
 	void Awake()
 	{
 		achievements = new Queue<Achievement>();
-		achievementManager.AchievementCompleted += AchievementManager_AchievementCompleted;
-	}
-
-	private void AchievementManager_AchievementCompleted(object sender, Achievement achievement)
-	{
-		achievements.Enqueue(achievement);
-		ShowNotification();
+		achievementManager.AchievementCompleted += (s, achievement) =>
+		{
+			achievements.Enqueue(achievement);
+			ShowNotification();
+		};
 	}
 
 	/// <summary>
 	/// Called by Animation Event
 	/// </summary>
-	private void OnNotificationComplete()
+	public void OnNotificationComplete()
 	{
 		isShowing = false;
 		ShowNotification();

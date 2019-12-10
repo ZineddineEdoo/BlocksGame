@@ -25,6 +25,7 @@ public class AchievementManager : MonoBehaviour
 			GetComponent<StringManager>().Loaded += (s, e) => LoadAchievements();
 
 			Globals.ScoreUpdated += (s, score) => CalculateForScore();
+			Globals.BonusUpdated += (s, bonus) => CalculateForBonus();
 		}
 	}
 
@@ -45,50 +46,84 @@ public class AchievementManager : MonoBehaviour
 
 	private (string Name, string Detail) GetNameDetail(AchievementID id)
 	{
-		string name;
-		string detail;
+		(string Name, string Detail) nameDetail;
 
 		if (id >= SCORE_START && id < BONUS_START)
-		{
-			string val;
-
-			if (id == AchievementID.Score1K)
-				val = "1K";
-			else if (id == AchievementID.Score10K)
-				val = "10K";
-			else if (id == AchievementID.Score100K)
-				val = "100K";
-			else if (id == AchievementID.Score1M)
-				val = "1M";
-			else if (id == AchievementID.Score10M)
-				val = "10M";
-			else if (id == AchievementID.Score100M)
-				val = "100M";
-			else if (id == AchievementID.ScoreN1K)
-				val = "-1K";
-			else if (id == AchievementID.ScoreN10K)
-				val = "-10K";
-			else if (id == AchievementID.ScoreN100K)
-				val = "-100K";
-			else if (id == AchievementID.ScoreN1M)
-				val = "-1M";
-			else
-				throw new ArgumentException($"Invalid Score Achievement ID {id}");
-
-			name = String.Format(StringManager.Instance.Strings["Score"], val);
-			detail = String.Format(StringManager.Instance.Strings["GetScoreOfSingleGame"], val);
-		}
+			nameDetail = GetScoreNameDetail(id);
 		else if (id >= BONUS_START)
-		{
-			name = "";
-			detail = "";
-		}
+			nameDetail = GetBonusNameDetail(id);
 		else
 			throw new ArgumentException($"Invalid Achievement ID {id}");
 
+		return nameDetail;
+	}
+
+	private (string Name, string Detail) GetScoreNameDetail(AchievementID id)
+	{
+		string val;
+
+		if (id == AchievementID.Score1K)
+			val = "1K";
+		else if (id == AchievementID.Score10K)
+			val = "10K";
+		else if (id == AchievementID.Score100K)
+			val = "100K";
+		else if (id == AchievementID.Score1M)
+			val = "1M";
+		else if (id == AchievementID.Score10M)
+			val = "10M";
+		else if (id == AchievementID.Score100M)
+			val = "100M";
+		else if (id == AchievementID.ScoreN1K)
+			val = "-1K";
+		else if (id == AchievementID.ScoreN10K)
+			val = "-10K";
+		else if (id == AchievementID.ScoreN100K)
+			val = "-100K";
+		else if (id == AchievementID.ScoreN1M)
+			val = "-1M";
+		else
+			throw new ArgumentException($"Invalid Score Achievement ID {id}");
+
+		var name = string.Format(StringManager.Instance.Strings["Score"], val);
+		var detail = string.Format(StringManager.Instance.Strings["GetScoreOfSingleGame"], val);
+
 		return (name, detail);
 	}
-	
+
+	private (string Name, string Detail) GetBonusNameDetail(AchievementID id)
+	{
+		string val;
+
+		if (id == AchievementID.Bonus1K)
+			val = "1K";
+		else if (id == AchievementID.Bonus10K)
+			val = "10K";
+		else if (id == AchievementID.Bonus100K)
+			val = "100K";
+		else if (id == AchievementID.Bonus1M)
+			val = "1M";
+		else if (id == AchievementID.Bonus10M)
+			val = "10M";
+		else if (id == AchievementID.Bonus100M)
+			val = "100M";
+		else if (id == AchievementID.BonusN1K)
+			val = "-1K";
+		else if (id == AchievementID.BonusN10K)
+			val = "-10K";
+		else if (id == AchievementID.BonusN100K)
+			val = "-100K";
+		else if (id == AchievementID.BonusN1M)
+			val = "-1M";
+		else
+			throw new ArgumentException($"Invalid Score Achievement ID {id}");
+
+		var name = string.Format(StringManager.Instance.Strings["ScoreBonus"], val);
+		var detail = string.Format(StringManager.Instance.Strings["GetBonusOfSingleGame"], val);
+
+		return (name, detail);
+	}
+
 	private void CalculateForScore()
 	{
 		// Every Achievement Not In CurrentSaveData
@@ -121,7 +156,26 @@ public class AchievementManager : MonoBehaviour
 	{
 		foreach (var achievement in Achievements.Where(a => !SaveManager.CurrentSaveData.Achievements.Any(i => i == a.ID)))
 		{
-			// TODO All Achievements for Bonus
+			if (achievement.ID == AchievementID.Bonus1K && Globals.Bonus >= Globals.THOUSAND)
+				ShowAchievementComplete(AchievementID.Bonus1K);
+			else if (achievement.ID == AchievementID.Bonus10K && Globals.Bonus >= 10 * Globals.THOUSAND)
+				ShowAchievementComplete(AchievementID.Bonus10K);
+			else if (achievement.ID == AchievementID.Bonus100K && Globals.Bonus >= 100 * Globals.THOUSAND)
+				ShowAchievementComplete(AchievementID.Bonus100K);
+			else if (achievement.ID == AchievementID.Bonus1M && Globals.Bonus >= 1 * Globals.MILLION)
+				ShowAchievementComplete(AchievementID.Bonus1M);
+			else if (achievement.ID == AchievementID.Bonus10M && Globals.Bonus >= 10 * Globals.MILLION)
+				ShowAchievementComplete(AchievementID.Bonus10M);
+			else if (achievement.ID == AchievementID.Bonus100M && Globals.Bonus >= 100 * Globals.MILLION)
+				ShowAchievementComplete(AchievementID.Bonus100M);
+			else if (achievement.ID == AchievementID.BonusN1K && Globals.Bonus <= -1 * Globals.THOUSAND)
+				ShowAchievementComplete(AchievementID.BonusN1K);
+			else if (achievement.ID == AchievementID.BonusN10K && Globals.Bonus <= -10 * Globals.THOUSAND)
+				ShowAchievementComplete(AchievementID.BonusN10K);
+			else if (achievement.ID == AchievementID.BonusN100K && Globals.Bonus <= -100 * Globals.THOUSAND)
+				ShowAchievementComplete(AchievementID.BonusN100K);
+			else if (achievement.ID == AchievementID.BonusN1M && Globals.Bonus <= -1 * Globals.MILLION)
+				ShowAchievementComplete(AchievementID.BonusN1M);
 		}
 	}
 

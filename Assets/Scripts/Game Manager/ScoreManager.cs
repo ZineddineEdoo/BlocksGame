@@ -47,6 +47,7 @@ public class ScoreManager : MonoBehaviour
 		gameManager.GameStarting += (s, e) =>
 		{
 			Score = 0f;
+			Globals.Bonus = 0f;
 		};
 		gameManager.GameEnding += (s, e) =>
 		{
@@ -93,6 +94,8 @@ public class ScoreManager : MonoBehaviour
 				IncreaseScore(bonus);
 			else
 				DecreaseScore(bonus);
+
+			Globals.Bonus += bonus;
 		}
 	}
 
@@ -115,6 +118,8 @@ public class ScoreManager : MonoBehaviour
 				IncreaseScore(bonus);
 			else
 				DecreaseScore(bonus);
+
+			Globals.Bonus += bonus;
 		}
 	}
 
