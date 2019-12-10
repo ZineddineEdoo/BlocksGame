@@ -10,7 +10,12 @@ public class MenuUI : MonoBehaviour
 	[SerializeField]
 	private GameManager gameManager = default;
 
+	[SerializeField]
+	private GameObject bonus = default;
+
 	public GameManager GameManager => gameManager;
+
+	public bool IsBonusActive => bonus.activeSelf;
 
 	void Awake()
 	{
@@ -24,4 +29,6 @@ public class MenuUI : MonoBehaviour
 	/// Used to unlock GameStarted Event
 	/// </summary>
 	public void OnUILoaded() => gameManager.IsUILoaded = true;
+
+	public void ToggleBonusDisplay() => bonus.SetActive(!bonus.activeSelf);
 }
